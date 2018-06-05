@@ -23,15 +23,16 @@ public class Product extends DateAudit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NaturalId
     @NotBlank
     @Size(max = 40)
     private String name;
 
+    @NaturalId
     @NotBlank
     @Size(max = 15)
     private String articleNumber;
 
-    @NaturalId
     @NotBlank
     @Size(max = 40)
     private String category;
@@ -41,9 +42,10 @@ public class Product extends DateAudit {
     private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "product_unit",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "unit_id"))
+    //JoinTable(name = "product_unit",
+    //     joinColumns = @JoinColumn(name = "product_id"),
+    //        inverseJoinColumns = @JoinColumn(name = "unit_id"))
+    @JoinColumn(name = "_id", nullable = false)
     private Unit unit;
 
   /*@ManyToOne(targetEntity = Exam.class)
