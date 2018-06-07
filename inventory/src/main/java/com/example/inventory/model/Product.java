@@ -42,10 +42,9 @@ public class Product extends DateAudit {
     private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    //JoinTable(name = "product_unit",
-    //     joinColumns = @JoinColumn(name = "product_id"),
-    //        inverseJoinColumns = @JoinColumn(name = "unit_id"))
-    @JoinColumn(name = "_id", nullable = false)
+    @JoinTable(name = "product_unit",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "unit_id"))
     private Unit unit;
 
   /*@ManyToOne(targetEntity = Exam.class)
@@ -56,10 +55,10 @@ public class Product extends DateAudit {
     private Exam exam;
   */
 
-    @ManyToOne(fetch = FetchType.LAZY)
+ /*   @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
-
+*/
     public Product() {
 
     }
@@ -70,7 +69,7 @@ public class Product extends DateAudit {
         this.category = category;
         this.price = price;
     }
-
+/*
     public Order getOrder(){
         return order;
     }
@@ -78,7 +77,7 @@ public class Product extends DateAudit {
     public void setOrder(Order order){
         this.order = order;
     }
-
+*/
     public Long getId() {
         return id;
     }
