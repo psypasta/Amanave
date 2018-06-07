@@ -16,6 +16,8 @@ export class AppComponent {
 
   user: User = new User;
   title = 'app';
+  loginYes = false;
+  loginNo = false;
   loginCred = {
     usernameOrEmail: null,
     password: null,
@@ -36,9 +38,16 @@ export class AppComponent {
 
   }
   login(){
-    this.loginService.login(this.loginCred).subscribe(loginCred=>{
-      console.log(loginCred);
+    this.loginService.login(this.loginCred).subscribe(loginCred=> {
+    },
+      (error) =>{ this.loginNo = true;
+      this.loginYes = false;
+      console.log("Login failure");
 
+      },
+      () =>{ this.loginYes = true;
+      this.loginNo = false;
+      console.log("Login Success");
     })
   }
 }
