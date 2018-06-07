@@ -1,1 +1,13 @@
 <button (click) = "newUser()">skapa ny user woohoo</button>
+
+<div>
+  <label>Användarnamn
+    <input [(ngModel)]="loginCred.usernameOrEmail">
+  </label>
+</div>
+<div>
+  <label>lösenord:
+    <input [(ngModel)]="loginCred.password">
+  </label>
+</div>
+<button (click) = "login()">logga in</button>
