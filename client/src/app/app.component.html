@@ -1,16 +1,35 @@
-<button (click) = "newUser()">skapa ny user woohoo</button>
+<!DOCTYPE html>
+<html>
+<body>
+<ul class="center">
+  <h1>Login sida</h1>
+  <div style="color: blue">
+    <label>Användarnamn:
+      <br>
+      <input [(ngModel)]="loginCred.usernameOrEmail">
+      <br>
+      <label>lösenord:
+        <br>
+        <input type="password" [(ngModel)]="loginCred.password">
+      </label>
+    </label>
+  </div>
+  <ul class="buttons">
+    <button (click) = "login()">logga in</button>
+    <nav>
+      <a routerLink="/login">Login Page</a>
+      <a routerLink="/mainpage">Home</a>
+    </nav>
 
-<div>
-  <label>Användarnamn
-    <input [(ngModel)]="loginCred.usernameOrEmail">
-  </label>
-</div>
-<div>
-  <label>lösenord:
-    <input [(ngModel)]="loginCred.password">
-  </label>
-</div>
-<button (click) = "login()">logga in</button>
+    <button (click) = "newUser()">skapa ny user woohoo</button>
+  </ul>
+</ul>
+</body>
+</html>
+
+
+
+
 
 <div *ngIf="loginYes">You are Winner!!</div>
 <div *ngIf="loginNo">You are a LOSE!!</div>

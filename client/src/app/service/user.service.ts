@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class UserService {
 
-  userURL = 'http://192.168.0.69:5000/api/auth/';
+  userURL = 'http://192.168.1.60/api/auth/';
 
   constructor(
     private http: HttpClient,
