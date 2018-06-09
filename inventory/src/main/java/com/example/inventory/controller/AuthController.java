@@ -1,12 +1,10 @@
 package com.example.inventory.controller;
 
 import com.example.inventory.exception.AppException;
-import com.example.inventory.model.Employee;
 import com.example.inventory.model.Role;
 import com.example.inventory.model.RoleName;
 import com.example.inventory.model.User;
 import com.example.inventory.payload.*;
-import com.example.inventory.repository.EmployeeRepository;
 import com.example.inventory.repository.RoleRepository;
 import com.example.inventory.repository.UserRepository;
 import com.example.inventory.security.JwtTokenProvider;
@@ -31,9 +29,6 @@ public class AuthController {
 
     @Autowired
     AuthenticationManager authenticationManager;
-
-    @Autowired
-    EmployeeRepository employeeRepository;
 
     @Autowired
     UserRepository userRepository;
