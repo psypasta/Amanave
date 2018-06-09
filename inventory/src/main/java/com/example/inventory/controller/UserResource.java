@@ -16,12 +16,12 @@ public class UserResource {
     private UserRepository userRepository;
 
     @GetMapping("/users")
-    public List<User> retrieveAllStudents() {
+    public List<User> retrieveAllUser() {
         return userRepository.findAll();
     }
 
-    @GetMapping("/users/{id}")
-    public User retrieveStudent(@PathVariable long id) {
+    @GetMapping("/user/{id}")
+    public User retrieveUser(@PathVariable long id) {
         Optional<User> user = userRepository.findById(id);
 
         if (!user.isPresent())
@@ -31,13 +31,13 @@ public class UserResource {
         return user.get();
     }
 
-    @DeleteMapping("/users/{id}")
-    public void deleteStudent(@PathVariable long id) {
+    @DeleteMapping("/user/{id}")
+    public void deleteUser(@PathVariable long id) {
         userRepository.deleteById(id);
     }
 
-    @PutMapping("/users/{id}")
-    public ResponseEntity<Object> updateStudent(@RequestBody User user, @PathVariable long id) {
+    @PutMapping("/user/{id}")
+    public ResponseEntity<Object> updateUser(@RequestBody User user, @PathVariable long id) {
 
         Optional<User> studentOptional = userRepository.findById(id);
 

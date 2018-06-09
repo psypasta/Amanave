@@ -3,8 +3,10 @@ package com.example.inventory.model;
 import com.example.inventory.model.audit.DateAudit;
 import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -37,14 +39,15 @@ public class Product extends DateAudit {
     @Size(max = 40)
     private String category;
 
+    @Column(precision=10, scale=2)
+    @DecimalMax("30.00")
     @NotBlank
-    @Size(max = 40)
-    private Double price;
+    private BigDecimal price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "product_unit",
+    /*@JoinTable(name = "product_unit",
             joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "unit_id"))
+            inverseJoinColumns = @JoinColumn(name = "unit_id"))*/
     private Unit unit;
 
   /*@ManyToOne(targetEntity = Exam.class)
@@ -63,7 +66,7 @@ public class Product extends DateAudit {
 
     }
 
-    public Product(String name, String articleNumber, String category, Double price) {
+    public Product(String name, String articleNumber, String category, BigDecimal price) {
         this.name = name;
         this.articleNumber = articleNumber;
         this.category = category;
@@ -110,11 +113,11 @@ public class Product extends DateAudit {
         this.category = category;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
