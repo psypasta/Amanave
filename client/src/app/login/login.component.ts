@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-
-import {User} from "../model/user";
-import {LoginService} from "../service/login.service"
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { AuthService } from '../service/auth.service';
+import { TokenStorage } from '../storage/token.storage';
 
 @Component({
   selector: 'app-login',
@@ -10,28 +11,24 @@ import {LoginService} from "../service/login.service"
 })
 export class LoginComponent {
 
-	//model = new User('psy', 'Robin', 'robin@gmail.com', 'psypsy');
-	user: User = new User;
-	loginYes = false;
-  	loginNo = false;
-  	loginCred = {
-    	usernameOrEmail: null,
-    	password: null
-  	};
-
-	constructor(private loginService: LoginService) { }
-
-	login(){
-    this.loginService.login(this.loginCred).subscribe(loginCred=> {
-    },
-      (error) =>{ this.loginNo = true;
-      this.loginYes = false;
-      console.log("Login failure");
-
-      },
-      () =>{ this.loginYes = true;
-      this.loginNo = false;
-      console.log("Login Success");
-    })
+  constructor(private authService: AuthService, private token: TokenStorage) {
   }
+
+  loginYes = false;
+  loginNo = false;
+  credentials = {
+    usernameOrEmail: null,
+    password: null,
+  };
+
+  login(): void {
+    console.log('here i am');
+    this.authService.attemptAuth(this.credentials).subscribe(
+      data => {
+       return this.token.saveToken(data.token);
+        // this.router.navigate(['user']);
+      }
+    );
+  }
+
 }

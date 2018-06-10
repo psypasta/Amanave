@@ -1,14 +1,19 @@
-<div>
-  <label>Användarnamn
-    <input [(ngModel)]="loginCred.usernameOrEmail">
-  </label>
+<h2>Login</h2>
+
+<div class="form-group">
+  <label for="username">Username or Email:</label>
+  <input type="text" class="form-control" id="username"
+         required [(ngModel)]="credentials.usernameOrEmail" name="usernameOrEmail" #name="ngModel">
 </div>
-<div>
-  <label>lösenord:
-    <input [(ngModel)]="loginCred.password">
-  </label>
+
+<div class="form-group">
+  <label for="password">Password</label>
+  <input type="password" class="form-control" id="password"
+         required
+         [(ngModel)]="credentials.password" name="password">
 </div>
-<button (click) = "login()">logga in</button>
+
+<button (click) = "login()">Log in</button>
 
 <div *ngIf="loginYes">You are Winner!!</div>
 <div *ngIf="loginNo">You are a LOSE!!</div>

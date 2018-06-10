@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import {User} from "../model/user";
+import {User} from '../model/user';
 
 
 const httpOptions = {
@@ -22,7 +22,7 @@ export class UserService {
   ) { }
 
   addUser(user: User): Observable<any>{
-   return this.http.post<User>(this.userURL + "signup", user, httpOptions).pipe(
-   )
+   return this.http.post<User>(this.userURL + 'signup', user, httpOptions).pipe(
+   );
   }
 }

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import {User} from "../model/user";
+import { User } from '../model/user';
 
 
 const httpOptions = {
@@ -22,8 +22,7 @@ export class LoginService {
   ) { }
 
   login(loginCred: object): Observable<any>{
-    return this.http.post<object>(this.userURL, loginCred, httpOptions).pipe(
-    )
+    return this.http.post<object>(this.userURL, loginCred, httpOptions).pipe();
   }
 
 }
