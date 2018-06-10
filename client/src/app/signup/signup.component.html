@@ -1,7 +1,6 @@
 <div class="container">
 
 	<h2>Signup</h2>
-	{{diagnostic}}
 	<form (ngSubmit)="onSubmit()" #userForm="ngForm">
 		<div class="form-group">
 	        <label for="name">Name</label>
@@ -28,7 +27,7 @@
 
     	<div class="form-group">
 	        <label for="password">Password</label>
-	        <input type="text" class="form-control" id="password"
+	        <input type="password" class="form-control" id="password"
        required
        [(ngModel)]="model.password" name="password">
     	</div>
