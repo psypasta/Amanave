@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {User} from "./model/user";
-import {UserService} from "./service/user.service";
 import {LoginService} from "./service/login.service";
 
 @Component({
@@ -10,9 +9,7 @@ import {LoginService} from "./service/login.service";
 })
 export class AppComponent {
 
-  constructor(private userService: UserService,
-              private loginService: LoginService,
-              ) { }
+  constructor(private loginService: LoginService) { }
 
   user: User = new User;
   title = 'app';
@@ -23,20 +20,6 @@ export class AppComponent {
     password: null,
   };
 
-  newUser(){
-    console.log(this.loginCred);
-    this.user.name = "Gurkan Burkan";
-    this.user.email = "Gurkan.Burkan@junkmail.se";
-    this.user.username = "Tim";
-    this.user.password = "aaaaaaah";
-
-    console.log(this.user);
-    this.userService.addUser(this.user).subscribe(user=> {
-
-    })
-
-
-  }
   login(){
     this.loginService.login(this.loginCred).subscribe(loginCred=> {
     },
