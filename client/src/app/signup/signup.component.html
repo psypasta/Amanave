@@ -2,7 +2,7 @@
 
 	<h2>Signup</h2>
 	{{diagnostic}}
-	<form #userForm="ngForm">
+	<form (ngSubmit)="onSubmit()" #userForm="ngForm">
 		<div class="form-group">
 	        <label for="name">Name</label>
 	        <input type="text" class="form-control" id="name"
@@ -38,8 +38,26 @@
 	        <input type="text" class="form-control" id="address">
     	</div>
 
-    	<button type="submit" class="btn btn-success">Submit</button>
-
     	<button (click) = "newUser()">Submit</button>
-	</form> 
+	</form>
+
+
+	<div [hidden]="!submitted">
+		<h2>You submitted the following:</h2>
+		<div class="row">
+			<div class="col-xs-3">Name</div>
+			<div class="col-xs-9  pull-left">{{ model.name }}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">Username</div>
+			<div class="col-xs-9 pull-left">{{ model.username }}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">email</div>
+			<div class="col-xs-9 pull-left">{{ model.email }}</div>
+		</div>
+		<br>
+
+		<button class="btn btn-primary" (click)="submitted=false">Edit</button>
+	</div>
 </div>
