@@ -1,16 +1,2 @@
 <app-signup></app-signup>
-
-<div>
-  <label>Användarnamn
-    <input [(ngModel)]="loginCred.usernameOrEmail">
-  </label>
-</div>
-<div>
-  <label>lösenord:
-    <input [(ngModel)]="loginCred.password">
-  </label>
-</div>
-<button (click) = "login()">logga in</button>
-
-<div *ngIf="loginYes">You are Winner!!</div>
-<div *ngIf="loginNo">You are a LOSE!!</div>
+<app-login></app-login>

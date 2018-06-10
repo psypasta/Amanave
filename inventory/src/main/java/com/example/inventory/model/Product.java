@@ -5,6 +5,7 @@ import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -41,14 +42,14 @@ public class Product extends DateAudit {
 
     @Column(precision=10, scale=2)
     @DecimalMax("30.00")
-    @NotBlank
+    @NotNull
     private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+  //  @ManyToOne(fetch = FetchType.LAZY)
     /*@JoinTable(name = "product_unit",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "unit_id"))*/
-    private Unit unit;
+ //   private Unit unit;
 
   /*@ManyToOne(targetEntity = Exam.class)
     private long examId;
@@ -120,13 +121,13 @@ public class Product extends DateAudit {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-
+/*
     public Unit getUnit() { return unit; }
 
     public void setUnit(Unit unit) {
         this.unit = unit;
     }
-
+*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
