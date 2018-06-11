@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 
 import { Product } from '../model/product';
 
-const productUrl = 'http://192.168.0.165:5000/product/';
+const productUrl = 'http://192.168.0.165:5000/products/';
 
 @Injectable()
 export class ProductService {
@@ -12,6 +12,6 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProduct(productId: number): Observable<any> {
-    return this.http.get<Product>(productUrl + productId);
+    return this.http.get<Product>(productUrl + 'get/' + productId);
   }
 }

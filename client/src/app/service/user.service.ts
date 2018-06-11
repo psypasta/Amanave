@@ -6,7 +6,7 @@ import {User} from '../model/user';
 
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': null})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
 
 @Injectable({
@@ -21,14 +21,15 @@ export class UserService {
   ) { }
 
   addUser(user: User): Observable<any>{
-   return this.http.post<User>(this.userURL + "api/auth/signup", user, httpOptions).pipe(
-   )
+   return this.http.post<User>(this.userURL + 'api/auth/signup', user, httpOptions).pipe();
   }
-  getUsers():Observable<User[]>{
-    return this.http.get<User[]>(this.userURL +"users");
+
+  getUsers(): Observable<User[]>{
+    return this.http.get<User[]>(this.userURL + 'users/get');
   }
-  getUser(id: number):Observable<User>{
-    return this.http.get<User>(this.userURL +"users/"+id);
+
+  getUser(id: number): Observable<User>{
+    return this.http.get<User>(this.userURL + 'users/get/' + id);
   }
-  //deleteUsers(user:User | number)
+  // deleteUsers(user:User | number)
 }

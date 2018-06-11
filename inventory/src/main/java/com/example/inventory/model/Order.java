@@ -20,11 +20,15 @@ public class Order extends UserDateAudit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     @NotBlank
     @Size(max = 140)
     private String job;
 
- //   @ManyToMany(fetch = FetchType.LAZY)
+    @OneToOne
+    private OrderDetails orderDetails;
+
+    //   @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinTable(name = "products",
  //           joinColumns = @JoinColumn(name = "order_id"),
  //           inverseJoinColumns = @JoinColumn(name = "id"))
@@ -47,6 +51,14 @@ public class Order extends UserDateAudit {
 
     public void setJob(String job) {
         this.job = job;
+    }
+
+    public OrderDetails getOrderDetailsId(){
+        return orderDetails;
+    }
+
+    public void setOrderDetails(OrderDetails orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
   //  public List<Product> getProducts() {

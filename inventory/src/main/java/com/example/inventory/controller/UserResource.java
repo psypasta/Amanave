@@ -10,17 +10,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/users")
 public class UserResource {
 
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/users")
+    @GetMapping("/get")
     public List<User> retrieveAllUser() {
         return userRepository.findAll();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/get/{id}")
     public User retrieveUser(@PathVariable long id) {
         Optional<User> user = userRepository.findById(id);
 
@@ -31,12 +32,12 @@ public class UserResource {
         return user.get();
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable long id) {
         userRepository.deleteById(id);
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Object> updateUser(@RequestBody User user, @PathVariable long id) {
 
         Optional<User> studentOptional = userRepository.findById(id);

@@ -45,24 +45,17 @@ public class Product extends DateAudit {
     @NotNull
     private BigDecimal price;
 
+
+    //@JoinTable(name = "product_unit"
+    //@JoinColumn(name = "id"),
+     //       inverseJoinColumns = @JoinColumn(name = "unit_id"))*/
+    @OneToOne(fetch = FetchType.LAZY)
+    private Unit unit;
+
   //  @ManyToOne(fetch = FetchType.LAZY)
-    /*@JoinTable(name = "product_unit",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "unit_id"))*/
- //   private Unit unit;
+  //  @JoinColumn(name = "order_id", nullable = false)
+  //  private OrderDetails orderDetails;
 
-  /*@ManyToOne(targetEntity = Exam.class)
-    private long examId;
-    otherwise it won't know what to map to. Or even better
-
-    @ManyToOne
-    private Exam exam;
-  */
-
- /*   @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
-*/
     public Product() {
 
     }

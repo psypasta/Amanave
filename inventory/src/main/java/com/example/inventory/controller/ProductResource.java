@@ -22,17 +22,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/products")
 public class ProductResource {
 
     @Autowired
     private ProductRepository productRepository;
 
-    @GetMapping("/products")
+    @GetMapping("/get")
     public List<Product> retrieveAllProduct() {
         return productRepository.findAll();
     }
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/get/{id}")
     public Product retrieveProduct(@PathVariable long id) {
         Optional<Product> product = productRepository.findById(id);
 
@@ -43,12 +44,12 @@ public class ProductResource {
         return product.get();
     }
 
-    @DeleteMapping("/product/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteProduct(@PathVariable long id) {
         productRepository.deleteById(id);
     }
 
-    @PutMapping("/product/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Object> updateProduct(@RequestBody Product product, @PathVariable long id) {
 
         Optional<Product> productOptional = productRepository.findById(id);
@@ -63,7 +64,7 @@ public class ProductResource {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/products")
+    @PostMapping("/create")
     public ResponseEntity<Object> createProduct(@RequestBody AddProductRequest productRequest) {
 
         if(productRepository.existsByName(productRequest.getName())) {
