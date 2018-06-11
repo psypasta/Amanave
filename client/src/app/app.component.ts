@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
   addUsers(){
     console.log(this.max);
-    this.userService.addUser(this.max).subscribe(max=>{
+    this.userService.addUser(this.max).subscribe(max => {
       console.log(max);
     });
   }
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
   }
 
   deleteUser(){
-   this.userService.deleteUsers(5).subscribe(user=>{
+   this.userService.deleteUsers(5).subscribe(user => {
 
    });
   }
