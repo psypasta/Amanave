@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import {User} from "../model/user";
-
+import { Observable } from 'rxjs';
+import { User } from '../model/user';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,8 +19,7 @@ export class UserService {
     private http: HttpClient,
   ) { }
 
-  addUser(user: User): Observable<any>{
-   return this.http.post<User>(this.userURL + "signup", user, httpOptions).pipe(
-   )
+  addUser(user: User): Observable<any> {
+   return this.http.post<User>(this.userURL + 'signup', user, httpOptions).pipe();
   }
 }

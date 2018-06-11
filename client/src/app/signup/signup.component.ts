@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {UserService} from "../service/user.service";
-import { User }    from '../model/user';
+import {UserService} from '../service/user.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-signup',
@@ -9,24 +9,21 @@ import { User }    from '../model/user';
 })
 export class SignUpComponent {
 
-	constructor(private userService: UserService) { }
+  constructor(private userService: UserService) { }
 
-	model = new User('psy', 'Robin', 'robin@gmail.com', 'psypsy');
+  model = new User();
 
-	submitted = false;
+  submitted = false;
 
-	onSubmit() { this.submitted = true; }
+  onSubmit() { this.submitted = true; }
 
-	// TODO: Remove this when we're done
-	get diagnostic() { return JSON.stringify(this.model); }
+  newUser() {
+      // console.log(this.loginCred);
+      console.log(this.model);
+      this.userService.addUser(this.model).subscribe(model => {
 
-	newUser(){
-	    console.log(this.loginCred);
-	    console.log(this.user);
-	    this.userService.addUser(this.model).subscribe(user=> {
-
-	    })
+  });
 
 
- 	}
+  }
 }
