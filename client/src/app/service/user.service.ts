@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from '../model/user';
 
-const userURL = 'http://192.168.0.165:5000/users/';
+const userURL = 'http://localhost:5000/users/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
@@ -20,7 +20,7 @@ export class UserService {
   ) { }
 
   addUser(user: User): Observable<User>{
-   return this.http.post<User>('http://192.168.0.165:5000/api/auth/signup', user, httpOptions);
+   return this.http.post<User>('http://localhost:5000/api/auth/signup', user, httpOptions);
   }
 
   getUsers(): Observable<User[]>{

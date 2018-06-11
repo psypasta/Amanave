@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
-import { TokenStorage } from '../storage/token.storage';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +9,7 @@ import { TokenStorage } from '../storage/token.storage';
 })
 export class LoginComponent {
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   loginYes = false;
@@ -24,10 +24,9 @@ export class LoginComponent {
       token => {
         localStorage.setItem('token', token.accessToken);
         console.log(localStorage.getItem('token'));
+        this.router.navigate(['./dashboard']);
        return;
-        // this.router.navigate(['user']);
       }
     );
   }
-
 }
