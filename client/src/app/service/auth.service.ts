@@ -1,14 +1,26 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {Observable} from "rxjs/index";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class AuthService {
   public jwtHelper: JwtHelperService;
-  constructor(){
+  userURL = 'http://192.168.0.165:5000/api/auth/signin';
 
+  constructor(
+    private http: HttpClient,
+    ){}
+
+  login(loginCred: object): Observable<any>{
+    return this.http.post<object>(this.userURL, loginCred, httpOptions).pipe();
   }
 
   public getToken(): string {

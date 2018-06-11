@@ -9,7 +9,7 @@ import { TokenStorage } from '../storage/token.storage';
 })
 export class LoginComponent {
 
-  constructor(private authService: AuthService, private token: TokenStorage) {
+  constructor(private authService: AuthService) {
   }
 
   loginYes = false;
@@ -21,9 +21,11 @@ export class LoginComponent {
 
   login(): void {
     console.log('here i am');
-    this.authService.attemptAuth(this.credentials).subscribe(
-      data => {
-       return this.token.saveToken(data.token);
+    this.authService.login(this.credentials).subscribe(
+      token => {
+        localStorage.setItem('token', token.accessToken);
+        console.log(localStorage.getItem('token'));
+       return;
         // this.router.navigate(['user']);
       }
     );

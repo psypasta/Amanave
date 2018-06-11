@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TestPageComponent } from './test-page/test-page.component';
-import { AuthService } from './service/auth.service';
 import { UserService } from './service/user.service';
 import { Interceptor } from './app.interceptor';
 import { TokenStorage } from './storage/token.storage';
@@ -13,7 +12,6 @@ import { SignUpComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ProductsComponent } from './products/products.component';
 import {ProductService} from './service/product.service';
-import { HTTP_INTERCEPTORS} from "@angular/common/http";
 import { TokenInterceptor} from "./token-interceptor";
 import {AuthService} from "./service/auth.service";
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -32,7 +30,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     BrowserModule,
     FormsModule,
   ],
-  providers: [
+  providers: [ProductService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

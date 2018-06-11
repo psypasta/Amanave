@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 
 import { Product } from '../model/product';
 
-const productUrl = 'http://localhost:5000/product/';
+const productUrl = 'http://192.168.0.165:5000/product/';
 
 @Injectable()
 export class ProductService {
