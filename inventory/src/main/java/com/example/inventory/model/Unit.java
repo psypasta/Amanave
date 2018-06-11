@@ -4,7 +4,7 @@ import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "units")
 public class Unit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,14 +13,14 @@ public class Unit {
     @Enumerated(EnumType.STRING)
     @NaturalId
     @Column(length = 30)
-    private ProductUnit name;
+    private ProductUnit unit;
 
     public Unit() {
 
     }
 
-    public Unit(ProductUnit name) {
-        this.name = name;
+    public Unit(ProductUnit unit) {
+        this.unit = unit;
     }
 
     public Long getId() {
@@ -31,11 +31,11 @@ public class Unit {
         this.id = id;
     }
 
-    public ProductUnit getName() {
-        return name;
+    public ProductUnit getUnit() {
+        return unit;
     }
 
-    public void setName(ProductUnit name) {
-        this.name = name;
+    public void setUnit(ProductUnit unit) {
+        this.unit = unit;
     }
 }

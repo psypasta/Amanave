@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import {User} from "../model/user";
 
+import { Observable } from 'rxjs';
+import {User} from '../model/user';
 
 
 const httpOptions = {
@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class UserService {
 
-  userURL = 'http://192.168.0.69:5000/';
+  userURL = 'http://localhost:5000/';
 
   constructor(
     private http: HttpClient,

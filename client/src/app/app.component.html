@@ -1,25 +1,3 @@
-<button (click) = "newUser()">skapa ny user woohoo</button>
-
-<div>
-  <label>Användarnamn
-    <input [(ngModel)]="loginCred.usernameOrEmail">
-  </label>
-</div>
-<div>
-  <label>lösenord:
-    <input [(ngModel)]="loginCred.password">
-  </label>
-</div>
-<button (click) = "login()">logga in</button>
-
-<div *ngIf="!loading">
-<h2>Lista över alla användare</h2>
-<ul>
-  <li *ngFor = "let testUser of userlist"></li>
-  <span> Användarnamn: {{testUser.username}}</span>
-</ul>
-</div>
-
-
-<div *ngIf="loginYes">You are Winner!!</div>
-<div *ngIf="loginNo">You are a LOSE!!</div>
+<app-products></app-products>
+<app-signup></app-signup>
+<app-login></app-login>

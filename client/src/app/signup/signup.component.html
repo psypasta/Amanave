@@ -1,0 +1,62 @@
+<div class="container">
+
+	<h2>Signup</h2>
+	<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+		<div class="form-group">
+	        <label for="name">Name</label>
+	        <input type="text" class="form-control" id="name"
+       		required [(ngModel)]="model.name" name="name" #name="ngModel">
+			<div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+			  	name is required
+			</div>
+ 		</div>
+
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username"
+     required
+     [(ngModel)]="model.username" name="username">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email"
+     required
+     [(ngModel)]="model.email" name="email">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password"
+     required
+     [(ngModel)]="model.password" name="password">
+    </div>
+
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address">
+    </div>
+
+    <button (click) = "newUser()">Submit</button>
+	</form>
+
+
+	<div [hidden]="!submitted">
+		<h2>You submitted the following:</h2>
+		<div class="row">
+			<div class="col-xs-3">Name</div>
+			<div class="col-xs-9  pull-left">{{ model.name }}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">Username</div>
+			<div class="col-xs-9 pull-left">{{ model.username }}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">email</div>
+			<div class="col-xs-9 pull-left">{{ model.email }}</div>
+		</div>
+		<br>
+
+		<button class="btn btn-primary" (click)="submitted=false">Edit</button>
+	</div>
+</div>

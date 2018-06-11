@@ -1,6 +1,5 @@
 package com.example.inventory.config;
 
-
 import com.example.inventory.security.UserPrincipal;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
