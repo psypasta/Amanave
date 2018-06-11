@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import {Observable} from "rxjs/index";
+import { Observable } from 'rxjs/index';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
@@ -32,7 +32,7 @@ export class AuthService {
     // get the token
     const token = this.getToken();
     // return a boolean indicating whether or not the token is expired
-    return this.jwtHelper.isTokenExpired(token)
+    return this.jwtHelper.isTokenExpired(token);
   }
 
 }

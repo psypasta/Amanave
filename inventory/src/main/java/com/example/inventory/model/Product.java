@@ -41,7 +41,7 @@ public class Product extends DateAudit {
     private String category;
 
     @Column(precision=10, scale=2)
-    @DecimalMax("30.00")
+    @DecimalMax("10000.00")
     @NotNull
     private BigDecimal price;
 

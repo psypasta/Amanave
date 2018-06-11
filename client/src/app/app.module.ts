@@ -5,17 +5,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TestPageComponent } from './test-page/test-page.component';
-import { UserService } from './service/user.service';
-import { Interceptor } from './app.interceptor';
-import { TokenStorage } from './storage/token.storage';
 import { SignUpComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ProductsComponent } from './products/products.component';
 import {ProductService} from './service/product.service';
-import { TokenInterceptor} from "./token-interceptor";
-import {AuthService} from "./service/auth.service";
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { TokenInterceptor} from './token-interceptor';
 import { AppRoutingModule } from './/app-routing.module';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +21,7 @@ import { AppRoutingModule } from './/app-routing.module';
     LoginComponent,
     ProductsComponent,
     TestPageComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

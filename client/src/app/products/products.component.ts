@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit{
   price: number;
 
   ngOnInit() {
-    //this.getProduct();
+    // this.getProduct();
   }
 
 
