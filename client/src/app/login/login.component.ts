@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
 import { AuthService } from '../service/auth.service';
 import { TokenStorage } from '../storage/token.storage';
 

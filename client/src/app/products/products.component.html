@@ -1,0 +1,38 @@
+<h2>Product id: {{ product.id }} details</h2>
+<div><span>id: </span>{{product.id}}</div>
+<div><span>name: </span>{{product.name}}</div>
+<div><span>articleNumber: </span>{{product.articleNumber}}</div>
+<div><span>category: </span>{{product.category}}</div>
+<div><span>price: </span>{{product.price}}</div>
+
+<br/>
+
+<div class="form-group">
+  <label for="name">Product name: </label>
+  <input type="text" class="form-control" id="name"
+         required
+         [(ngModel)]="product.name" name="name">
+</div>
+
+<div class="form-group">
+  <label for="articleNumber">Article Number: </label>
+  <input type="text" class="form-control" id="articleNumber"
+         required
+         [(ngModel)]="product.articleNumber" name="articleNumber">
+</div>
+
+<div class="form-group">
+  <label for="category">Category: </label>
+  <input type="text" class="form-control" id="category"
+         required
+         [(ngModel)]="product.category" name="category">
+</div>
+
+<div class="form-group">
+  <label for="price">Price: </label>
+  <input type="text" class="form-control" id="price"
+         required
+         [(ngModel)]="product.price" name="price">
+</div>
+
+<button (click) = "getProduct()">Submit</button>

@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpInterceptor, HttpRequest, HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent,
   HttpResponse, HttpUserEvent, HttpErrorResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { Router } from '@angular/router';
 import { TokenStorage } from './storage/token.storage';
-// import 'rxjs/add/observable/of';
-// import 'rxjs/add/operators/do';
-// import { tap } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 
 const TOKEN_HEADER_KEY = 'Authorization';
