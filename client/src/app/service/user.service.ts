@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from '../model/user';
 
-
+const userURL = 'http://192.168.0.165:5000/users/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
@@ -14,22 +14,22 @@ const httpOptions = {
 })
 export class UserService {
 
-  userURL = 'http://192.168.0.165:5000/';
 
   constructor(
     private http: HttpClient,
   ) { }
 
-  addUser(user: User): Observable<any>{
-   return this.http.post<User>(this.userURL + 'api/auth/signup', user, httpOptions).pipe();
+  addUser(user: User): Observable<User>{
+   return this.http.post<User>('http://192.168.0.165:5000/api/auth/signup', user, httpOptions);
   }
 
   getUsers(): Observable<User[]>{
-    return this.http.get<User[]>(this.userURL + 'users/get');
+    return this.http.get<User[]>(userURL + 'get');
   }
-
   getUser(id: number): Observable<User>{
-    return this.http.get<User>(this.userURL + 'users/get/' + id);
+    return this.http.get<User>(userURL + 'get/' + id);
   }
-  // deleteUsers(user:User | number)
+  deleteUsers(id: number): Observable<User>{
+    return this.http.delete<User>(userURL + 'delete/' + id);
+  }
 }

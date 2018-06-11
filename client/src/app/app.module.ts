@@ -15,6 +15,7 @@ import {ProductService} from './service/product.service';
 import { TokenInterceptor} from "./token-interceptor";
 import {AuthService} from "./service/auth.service";
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     SignUpComponent,
     LoginComponent,
     ProductsComponent,
+    TestPageComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserModule,
     FormsModule,
+    AppRoutingModule,
   ],
   providers: [ProductService,
     {

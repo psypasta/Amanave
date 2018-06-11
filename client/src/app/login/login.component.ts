@@ -18,7 +18,6 @@ export class LoginComponent {
     usernameOrEmail: null,
     password: null,
   };
-
   login(): void {
     console.log('here i am');
     this.authService.login(this.credentials).subscribe(
