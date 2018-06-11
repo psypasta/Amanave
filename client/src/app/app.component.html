@@ -16,20 +16,21 @@
   </div>
   <ul class="buttons">
     <button (click) = "login()">logga in</button>
+    <h1>hello</h1>
     <nav>
       <a routerLink="/login">Login Page</a>
-      <a routerLink="/mainpage">Home</a>
+      
     </nav>
 
     <button (click) = "newUser()">skapa ny user woohoo</button>
   </ul>
 </ul>
+<ul class="Home">
+  <a routerLink="/home">Home</a>
+</ul>
+
 </body>
 </html>
-
-
-
-
 
 <div *ngIf="loginYes">You are Winner!!</div>
 <div *ngIf="loginNo">You are a LOSE!!</div>

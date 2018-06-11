@@ -11,8 +11,4 @@ export class MainpageServiceService {
 
   constructor(private mainpage: MainpageComponent) { }
 
-  getProducts(): Observable<product> {
-
-  }
-
 }
