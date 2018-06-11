@@ -44,11 +44,13 @@ public class ProductResource {
         return product.get();
     }
 
+    @CrossOrigin(origins = "http://localhost:5000/products")
     @DeleteMapping("/delete/{id}")
     public void deleteProduct(@PathVariable long id) {
         productRepository.deleteById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:5000/products")
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> updateProduct(@RequestBody Product product, @PathVariable long id) {
 
