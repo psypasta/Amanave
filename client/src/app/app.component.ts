@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import {User} from './model/user';
 import {UserService} from './service/user.service';
 import {Product} from './model/product';
+import {EventEmitter} from "@angular/core";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
 
   title = 'app';
   users: User[] = null;
+  loggedIn = false;
 
   max: User = {
     id: null,
@@ -28,6 +30,10 @@ export class AppComponent implements OnInit {
     private userService: UserService,
   ) { }
 
+  loggEvent(loggedIn: boolean){
+    this.loggedIn = loggedIn;
+    console.log("Här är vi " + loggedIn );
+  }
 
   addUsers(){
     console.log(this.max);

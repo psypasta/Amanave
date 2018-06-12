@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { Router} from '@angular/router';
 
@@ -10,6 +10,15 @@ import { Router} from '@angular/router';
 export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {
+  }
+
+  @Input()loggedIn;
+  @Output() logEvent = new EventEmitter<boolean>();
+
+  loginEvent(loggedIn: boolean) {
+    this.logEvent.emit(loggedIn);
+    console.log(loggedIn);
+    this.router.navigateByUrl("/usersList");
   }
 
   loginYes = false;
@@ -24,9 +33,15 @@ export class LoginComponent {
       token => {
         localStorage.setItem('token', token.accessToken);
         console.log(localStorage.getItem('token'));
-        this.router.navigate(['./dashboard']);
-       return;
-      }
-    );
+        },
+      error =>{
+
+      },
+      ()=>{
+        console.log(this.loggedIn);
+       this.loggedIn = true;
+       this.loginEvent(this.loggedIn);
+       console.log(this.loggedIn);
+      });
   }
 }

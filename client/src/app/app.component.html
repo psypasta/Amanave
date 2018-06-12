@@ -1,8 +1,13 @@
-<div class="center">
-
-  <button (click)="addUsers()">MaxParty</button>
-  <button (click)="getUsers()">Users Party</button>
-  <button (click)="deleteUser()">Murder the guest</button>
-  <router-outlet></router-outlet>
+<div>
+  <div *ngIf="loggedIn">
+    <app-test-page>[loggedIn]="loggedIn"</app-test-page>
+  </div>
+  <div class="center" *ngIf="!loggedIn">
+    <app-login
+      [loggedIn]="loggedIn"
+      (logEvent)="loggEvent($event)">
+    </app-login>
+    hejhej
+  </div>
 
 </div>
