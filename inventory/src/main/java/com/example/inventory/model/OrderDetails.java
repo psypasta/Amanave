@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.List;
 
 @Entity
@@ -21,11 +21,17 @@ public class OrderDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-  // @NotBlank
- //   @Size(max = 140)
+    // @NotBlank
+    //   @Size(max = 140)
 
-    @OneToMany
-    private Collection<Product> productCollection = new ArrayList<>();
+    @ManyToOne(targetEntity = Product.class, cascade = CascadeType.ALL)
+    @JoinColumns({
+            @JoinColumn(name = "product_id", referencedColumnName = "id"),
+            @JoinColumn(name = "product_name", referencedColumnName="name")
+    })
+    private Product product;
+
+    private int quantity;
 
     //   @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinTable(name = "products",
@@ -36,6 +42,16 @@ public class OrderDetails {
 //  @NotNull
 //  private Instant expirationDateTime;
 
+    public OrderDetails() {
+
+    }
+
+    public OrderDetails(Product product, int quantity) {
+        this.product = product;
+        this.quantity = quantity;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -44,38 +60,11 @@ public class OrderDetails {
         this.id = id;
     }
 
-    public Collection<Product> getProductCollection() {
-        return productCollection;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductCollection(Collection<Product> productCollection) {
-        this.productCollection = productCollection;
+    public void setProduct(Product product) {
+        this.product = product;
     }
-
-    //  public List<Product> getProducts() {
-    //      return products;
-    //   }
-
-    //   public void setProducts(List<Product> products) {
-    //       this.products = products;
-    //   }
-
-    /*
-    public Instant getExpirationDateTime() {
-        return expirationDateTime;
-    }
-
-    public void setExpirationDateTime(Instant expirationDateTime) {
-        this.expirationDateTime = expirationDateTime;
-    } */
-
-    //  public void addProduct(Product product) {
-    //    products.add(product);
-    //     product.setOrder(this);
-    // }
-
-    //public void removeProduct(Product product) {
-    //   products.remove(product);
-    //    product.setOrder(null);
-    // }
 }

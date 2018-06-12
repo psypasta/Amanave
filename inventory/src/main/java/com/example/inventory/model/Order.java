@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -25,8 +26,9 @@ public class Order extends UserDateAudit {
     @Size(max = 140)
     private String job;
 
-    @OneToOne
-    private OrderDetails orderDetails;
+    @OneToMany(targetEntity = OrderDetails.class, cascade = CascadeType.ALL)
+    @ElementCollection
+    private List<OrderDetails> orderDetails = new ArrayList<>();
 
     //   @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinTable(name = "products",
@@ -36,6 +38,14 @@ public class Order extends UserDateAudit {
 
 //  @NotNull
 //  private Instant expirationDateTime;
+
+    public Order() {
+
+    }
+
+    public Order(String job) {
+        this.job = job;
+    }
 
     public Long getId() {
         return id;
@@ -53,12 +63,12 @@ public class Order extends UserDateAudit {
         this.job = job;
     }
 
-    public OrderDetails getOrderDetailsId(){
+    public List<OrderDetails> getOrderDetailsList(){
         return orderDetails;
     }
 
-    public void setOrderDetails(OrderDetails orderDetails) {
-        this.orderDetails = orderDetails;
+    public void addOrderDetails(OrderDetails orderDetails) {
+        this.orderDetails.add(orderDetails);
     }
 
   //  public List<Product> getProducts() {
