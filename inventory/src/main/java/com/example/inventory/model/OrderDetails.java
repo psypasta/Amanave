@@ -31,13 +31,7 @@ public class OrderDetails {
     })
     private List<Product> productList = new ArrayList<>();
 
-    @NotNull
-    @ElementCollection
-    @CollectionTable(
-            name="quantity",
-            joinColumns=@JoinColumn(name="OWNER_ID")
-    )
-    private List<Long> quantity;
+    private int quantity = productList.size();
 
     //   @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinTable(name = "products",
@@ -52,9 +46,8 @@ public class OrderDetails {
 
     }
 
-    public OrderDetails(List<Product> productList, List<Long> quantity) {
+    public OrderDetails(List<Product> productList) {
         this.productList = productList;
-        this.quantity = quantity;
     }
 
     public Long getId() {
