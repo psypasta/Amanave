@@ -4,7 +4,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class AddOrderRequest {
@@ -14,7 +13,7 @@ public class AddOrderRequest {
     private String job;
 
     @NotNull
-    private List<Long> quantity = new ArrayList<>();
+    private List<Integer> quantity = new ArrayList<>();
 
     @NotNull
     private List<Long> products = new ArrayList<>();
@@ -27,11 +26,11 @@ public class AddOrderRequest {
         this.job = job;
     }
 
-    public List<Long> getQuantity() {
+    public List<Integer> getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(List<Long> quantity) {
+    public void setQuantity(List<Integer> quantity) {
         this.quantity = quantity;
     }
 

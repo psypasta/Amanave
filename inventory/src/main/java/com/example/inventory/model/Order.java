@@ -26,7 +26,8 @@ public class Order extends UserDateAudit {
     @Size(max = 140)
     private String job;
 
-    @OneToMany(targetEntity = OrderDetails.class)
+    @OneToMany(targetEntity = OrderDetails.class, cascade = CascadeType.ALL)
+    @ElementCollection
     private List<OrderDetails> orderDetails = new ArrayList<>();
 
     //   @ManyToMany(fetch = FetchType.LAZY)
@@ -66,7 +67,7 @@ public class Order extends UserDateAudit {
         return orderDetails;
     }
 
-    public void setOrderDetails(OrderDetails orderDetails) {
+    public void addOrderDetails(OrderDetails orderDetails) {
         this.orderDetails.add(orderDetails);
     }
 

@@ -20,7 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.Collections;
+import java.util.*;
 
 @RestController
 @RequestMapping("/orders")
@@ -30,39 +30,33 @@ public class OrderResource {
     OrderRepository orderRepository;
 
     @Autowired
-    OrderDetailsRepository orderDetailsRepository;
-
-    @Autowired
     ProductRepository productRepository;
 
     @PostMapping("/create")
     public ResponseEntity<?> registerOrder(@Valid @RequestBody AddOrderRequest addOrderRequest) {
-      /*  if(orderRepository.existsByUsername(signUpRequest.getUsername())) {
-            return new ResponseEntity(new ApiResponse(false, "Username is already taken!"),
-                    HttpStatus.BAD_REQUEST);
-        }
 
-        if(orderRepository.existsByEmail(signUpRequest.getEmail())) {
-            return new ResponseEntity(new ApiResponse(false, "Email Address already in use!"),
-                    HttpStatus.BAD_REQUEST);
-        }
-*/
-        // Creating the order details
+        Iterable<Long> idList = addOrderRequest.getProducts();
+        Iterator<Long> iter = idList.iterator();
 
-        //Gör en ny function för detta ? add products som loopar igenom getProducts settar koasfkjsdflködsf
-        OrderDetails orderDetails = new OrderDetails(productRepository.findAllById(addOrderRequest.getProducts()));
-
-        OrderDetails orderDetailsResult = orderDetailsRepository.save(orderDetails);
-        // Creating the order
         Order order = new Order(addOrderRequest.getJob());
+        List<Integer> quantityList = addOrderRequest.getQuantity();
+        int i = 0;
+        while(iter.hasNext()){
 
-        order.setOrderDetails(orderDetails);
+            Product p = productRepository.findById(iter.next()).get();
+            OrderDetails orderDetails = new OrderDetails(p, quantityList.get(i));
+            order.addOrderDetails(orderDetails);
+            System.out.println(p.getId());
+            System.out.println(p.getName());
+        }
+
+        System.err.println("help");
 
         Order orderResult = orderRepository.save(order);
+
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/orders/{job}")
                 .buildAndExpand(orderResult.getJob()).toUri();
-
         return ResponseEntity.created(location).body(new ApiResponse(true, "Order registered successfully"));
     }
 
