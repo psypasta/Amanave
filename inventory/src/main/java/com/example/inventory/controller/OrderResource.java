@@ -36,7 +36,7 @@ public class OrderResource {
     ProductRepository productRepository;
 
     @PostMapping("/create")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody AddOrderRequest addOrderRequest) {
+    public ResponseEntity<?> registerOrder(@Valid @RequestBody AddOrderRequest addOrderRequest) {
       /*  if(orderRepository.existsByUsername(signUpRequest.getUsername())) {
             return new ResponseEntity(new ApiResponse(false, "Username is already taken!"),
                     HttpStatus.BAD_REQUEST);
