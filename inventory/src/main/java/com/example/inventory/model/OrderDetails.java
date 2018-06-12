@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.List;
 
 @Entity
@@ -25,8 +25,19 @@ public class OrderDetails {
  //   @Size(max = 140)
 
     @ManyToOne(targetEntity = Product.class)
-    @JoinColumn(name = "products_id", referencedColumnName = "id")
-    private Collection<Product> productCollection = new ArrayList<>();
+    @JoinColumns({
+            @JoinColumn(name = "product_id", referencedColumnName = "id"),
+            @JoinColumn(name = "product_name", referencedColumnName="name")
+    })
+    private List<Product> productList = new ArrayList<>();
+
+    @NotNull
+    @ElementCollection
+    @CollectionTable(
+            name="quantity",
+            joinColumns=@JoinColumn(name="OWNER_ID")
+    )
+    private List<Long> quantity;
 
     //   @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinTable(name = "products",
@@ -37,6 +48,15 @@ public class OrderDetails {
 //  @NotNull
 //  private Instant expirationDateTime;
 
+    public OrderDetails() {
+
+    }
+
+    public OrderDetails(List<Product> productList, List<Long> quantity) {
+        this.productList = productList;
+        this.quantity = quantity;
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,12 +65,12 @@ public class OrderDetails {
         this.id = id;
     }
 
-    public Collection<Product> getProductCollection() {
-        return productCollection;
+    public List<Product> getProductList() {
+        return productList;
     }
 
-    public void setProductCollection(Collection<Product> productCollection) {
-        this.productCollection = productCollection;
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
     //  public List<Product> getProducts() {
