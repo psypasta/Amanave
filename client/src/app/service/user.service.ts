@@ -3,8 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import {User} from '../model/user';
+import {Product} from "../model/product";
 
 const userURL = 'http://localhost:5000/users/';
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
@@ -31,5 +33,8 @@ export class UserService {
   }
   deleteUsers(id: number): Observable<User>{
     return this.http.delete<User>(userURL + 'delete/' + id);
+  }
+  updateProduct(user: User, id: number): Observable<any>{
+    return this.http.put<User>(userURL + 'update/' + id,  user, httpOptions);
   }
 }
