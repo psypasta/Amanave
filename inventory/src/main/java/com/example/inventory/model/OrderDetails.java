@@ -24,7 +24,8 @@ public class OrderDetails {
   // @NotBlank
  //   @Size(max = 140)
 
-    @OneToMany
+    @ManyToOne(targetEntity = Product.class)
+    @JoinColumn(name = "products_id", referencedColumnName = "id")
     private Collection<Product> productCollection = new ArrayList<>();
 
     //   @ManyToMany(fetch = FetchType.LAZY)

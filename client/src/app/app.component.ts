@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
   }
 
   deleteUser(){
-   this.userService.deleteUsers(1).subscribe(user => {
+   this.userService.deleteUsers(4).subscribe(user => {
 
    });
   }

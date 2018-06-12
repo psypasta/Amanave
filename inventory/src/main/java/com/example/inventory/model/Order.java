@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -25,8 +26,8 @@ public class Order extends UserDateAudit {
     @Size(max = 140)
     private String job;
 
-    @OneToOne
-    private OrderDetails orderDetails;
+    @OneToMany(targetEntity = OrderDetails.class)
+    private Collection<OrderDetails> orderDetails = new ArrayList<>();
 
     //   @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinTable(name = "products",
@@ -53,11 +54,11 @@ public class Order extends UserDateAudit {
         this.job = job;
     }
 
-    public OrderDetails getOrderDetailsId(){
+    public Collection<OrderDetails> getOrderDetailsCollection(){
         return orderDetails;
     }
 
-    public void setOrderDetails(OrderDetails orderDetails) {
+    public void setOrderDetails(Collection<OrderDetails> orderDetails) {
         this.orderDetails = orderDetails;
     }
 
