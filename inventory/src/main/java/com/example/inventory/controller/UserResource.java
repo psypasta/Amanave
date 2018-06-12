@@ -37,6 +37,7 @@ public class UserResource {
         userRepository.deleteById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:5000/users")
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> updateUser(@RequestBody User user, @PathVariable long id) {
 
