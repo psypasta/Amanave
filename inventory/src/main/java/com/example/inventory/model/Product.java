@@ -12,15 +12,15 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "products", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {
+/*@Table(name = "products", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {               //Item of interest - max
                 "article_number"
         }),
         @UniqueConstraint(columnNames = {
                 "name"
         })
-})
-//@Table(name = "products")
+})*/
+@Table(name = "products")
 public class Product extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,14 +40,19 @@ public class Product extends DateAudit {
     @Size(max = 40)
     private String category;
 */
-
+/*
     @OneToMany
     @NotNull
     @ElementCollection
     @JoinTable(name = "product_product_category",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "product_category_id"))
-    private Collection<ProductCategories> productCategories;
+    private Collection<ProductCategories> productCategories;*/
+
+    //Here JoinColumn states that this entity is the owner of the relationship
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private ProductCategories productCategories;
 
     @Column(precision=10, scale=2)
     @DecimalMax("10000.00")
@@ -77,11 +82,11 @@ public class Product extends DateAudit {
         this.price = price;
     }
 
-    public void setCategory(Collection<ProductCategories> productCategories){
+    public void setCategory(ProductCategories productCategories){
         this.productCategories = productCategories;
     }
 
-    public Collection<ProductCategories> getCategory(){
+    public ProductCategories getCategory(){
         return productCategories;
     }
 /*

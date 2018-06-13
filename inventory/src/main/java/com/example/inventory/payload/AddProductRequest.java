@@ -19,8 +19,7 @@ public class AddProductRequest {
     private String articleNumber;
 
     @NotBlank
-    @Size(max = 40)
-    private String category;
+    private long category;
 
     @DecimalMax("30.00")
     @NotNull
@@ -42,11 +41,11 @@ public class AddProductRequest {
         this.articleNumber = articleNumber;
     }
 
-    public String getCategory(){
+    public long getCategory(){
         return category;
     }
 
-    public void setCategory(String category){
+    public void setCategory(long category){
         this.category = category;
     }
 

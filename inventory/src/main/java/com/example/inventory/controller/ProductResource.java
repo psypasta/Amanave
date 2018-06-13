@@ -5,6 +5,7 @@ import com.example.inventory.model.*;
 import com.example.inventory.payload.AddProductRequest;
 import com.example.inventory.payload.ApiResponse;
 import com.example.inventory.payload.SignUpRequest;
+import com.example.inventory.repository.ProductCategoryRepository;
 import com.example.inventory.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,9 @@ public class ProductResource {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    ProductCategoryRepository productCategoryRepository;
 
     @GetMapping("/get")
     public List<Product> retrieveAllProduct() {
@@ -76,15 +80,17 @@ public class ProductResource {
                     HttpStatus.BAD_REQUEST);
         }
 
-        //(String name, String articleNumber, String category, BigDecimal price)
         Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(), productRequest.getPrice());
-        //productRequest.getCategory()
-        //product.setCategory(productCategory);
 
+        Optional<ProductCategories> optionalProductCategoriy = productCategoryRepository.findById(productRequest.getCategory());
+        if(!optionalProductCategoriy.isPresent()){
+            /*
+                    fortsätt här sedan max
+                    Error om man inte hittar category?
+             */
+        }
 
-        /*
-                fortsätt här sedan max
-         */
+        product.setCategory(optionalProductCategoriy.get());
 
         Product savedProduct = productRepository.save(product);
 
