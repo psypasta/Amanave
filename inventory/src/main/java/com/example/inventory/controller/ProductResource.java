@@ -1,10 +1,7 @@
 package com.example.inventory.controller;
 
 import com.example.inventory.exception.AppException;
-import com.example.inventory.model.Product;
-import com.example.inventory.model.Role;
-import com.example.inventory.model.RoleName;
-import com.example.inventory.model.User;
+import com.example.inventory.model.*;
 import com.example.inventory.payload.AddProductRequest;
 import com.example.inventory.payload.ApiResponse;
 import com.example.inventory.payload.SignUpRequest;
@@ -80,11 +77,16 @@ public class ProductResource {
         }
 
         //(String name, String articleNumber, String category, BigDecimal price)
-        Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(),
-                                        productRequest.getCategory(), productRequest.getPrice());
+        Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(), productRequest.getPrice());
+        //productRequest.getCategory()
+        //product.setCategory(productCategory);
+
+
+        /*
+                fortsätt här sedan max
+         */
 
         Product savedProduct = productRepository.save(product);
-
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/products/{username}")
