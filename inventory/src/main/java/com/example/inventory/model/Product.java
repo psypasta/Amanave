@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-/*
 @Table(name = "products", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
                 "article_number"
@@ -19,8 +18,8 @@ import java.util.Objects;
         @UniqueConstraint(columnNames = {
                 "name"
         })
-})*/
-@Table(name = "products")
+})
+//@Table(name = "products")
 public class Product extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

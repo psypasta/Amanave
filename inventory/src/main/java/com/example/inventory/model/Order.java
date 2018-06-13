@@ -10,8 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.List;
 
 @Entity
@@ -32,6 +31,12 @@ public class Order extends UserDateAudit {
     @ElementCollection
     private List<OrderDetails> orderDetails = new ArrayList<>();
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "order_order_status",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_status_id"))
+    private Set<OrderStatus> orderStatusSet = new HashSet<>();
+
     //   @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinTable(name = "products",
  //           joinColumns = @JoinColumn(name = "order_id"),
@@ -47,6 +52,14 @@ public class Order extends UserDateAudit {
 
     public Order(String job) {
         this.job = job;
+    }
+
+    public Set<OrderStatus> getOrderStatusSet() {
+        return orderStatusSet;
+    }
+
+    public void setOrderStatus(Set<OrderStatus> orderStatusSet) {
+        this.orderStatusSet = orderStatusSet;
     }
 
     public Long getId() {

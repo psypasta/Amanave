@@ -8,6 +8,7 @@ import com.example.inventory.payload.ApiResponse;
 import com.example.inventory.payload.SignUpRequest;
 import com.example.inventory.repository.OrderDetailsRepository;
 import com.example.inventory.repository.OrderRepository;
+import com.example.inventory.repository.OrderStatusRepository;
 import com.example.inventory.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,9 @@ public class OrderResource {
 
     @Autowired
     OrderRepository orderRepository;
+
+    @Autowired
+    OrderStatusRepository orderStatusRepository;
 
     @Autowired
     ProductRepository productRepository;
@@ -86,6 +90,11 @@ public class OrderResource {
         }
 
         System.err.println("help");
+
+        OrderStatus orderStatus = orderStatusRepository.findByName(OrderStatusName.WAITING)
+                .orElseThrow(() -> new AppException("Order Status not set."));
+
+        order.setOrderStatus(Collections.singleton(orderStatus));
 
         Order orderResult = orderRepository.save(order);
 
