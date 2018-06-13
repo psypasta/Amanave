@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class LoginService {
 
-  userURL = 'http://192.168.0.165:5000/api/auth/signin';
+  userURL = 'http://localhost:5000/api/auth/signin';
 
   constructor(
     private http: HttpClient,
