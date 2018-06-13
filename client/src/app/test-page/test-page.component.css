@@ -1,8 +1,24 @@
+.topleft {
+
+
+  top: 0px;
+  left: 0px;
+
+}
+.borderBlue {
+
+  background-color: #69b1db;
+  margin: 0px;
+  left: 0px;
+  top: 0px;
+  width: auto;
+
+}
 .dropbtn {
   background-color: #69b1db;
   color: white;
-  padding: 16px;
-  font-size: 16px;
+  padding-top: 20px;
+  font-size: 20px;
   border: none;
 }
 
