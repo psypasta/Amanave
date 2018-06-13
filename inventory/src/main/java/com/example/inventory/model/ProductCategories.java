@@ -1,5 +1,6 @@
 package com.example.inventory.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -21,9 +22,13 @@ public class ProductCategories {
     @Size(max = 40)
     private String categoryName;
 
-    //Here mappedBy indicates that the owner is in the other side
+  /*  //Here mappedBy indicates that the owner is in the other side
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "productCategories", cascade = CascadeType.ALL)
-    private Set<Product> products = new HashSet<>();
+    private Set<Product> products = new HashSet<>(); */
+
+    @JsonIgnore
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="productCategories")
+    private Set<Product> products;
 
     public ProductCategories() {
 
@@ -56,6 +61,11 @@ public class ProductCategories {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public void addProduct(Product product) {
+        product.setCategory(this);
+        products.add(product);
     }
 
 

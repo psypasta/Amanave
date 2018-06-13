@@ -50,8 +50,10 @@ public class Product extends DateAudit {
     private Collection<ProductCategories> productCategories;*/
 
     //Here JoinColumn states that this entity is the owner of the relationship
-    @ManyToOne(fetch = FetchType.LAZY)
+  /*  @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
+    private ProductCategories productCategories;*/
+    @ManyToOne
     private ProductCategories productCategories;
 
     @Column(precision=10, scale=2)
