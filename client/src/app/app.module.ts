@@ -13,6 +13,7 @@ import { TokenInterceptor} from './token-interceptor';
 import { AppRoutingModule } from './/app-routing.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UserListComponent } from './user-list/user-list.component';
     TestPageComponent,
     ProductDetailsComponent,
     UserListComponent,
+    ProductPageComponent,
   ],
   imports: [
     BrowserModule,
