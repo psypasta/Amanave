@@ -35,6 +35,7 @@ export class LoginComponent {
         console.log(localStorage.getItem('token'));
         },
       error =>{
+        console.log("Login failed")
 
       },
       ()=>{

@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Product } from '../model/product';
 import {User} from "../model/user";
 
-const productURL = 'http://localhost:5000/products/';
+const productURL = 'http://192.168.0.165:5000/products/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': null})
 };
