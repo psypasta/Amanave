@@ -24,7 +24,7 @@ public class ProductCategories {
 
     }
 
-    public ProductCategories(String categoryName) {i    
+    public ProductCategories(String categoryName) {
         this.categoryName = categoryName;
 
     }
