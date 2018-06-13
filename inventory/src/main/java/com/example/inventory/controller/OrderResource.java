@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.swing.text.html.Option;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.*;
@@ -28,6 +29,43 @@ public class OrderResource {
 
     @Autowired
     ProductRepository productRepository;
+
+    @GetMapping("/get")
+    public List<Order> retrieveAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    @GetMapping("/get/{id}")
+    public Order retrieveOrder(@PathVariable long id) {
+        Optional<Order> orderOptional = orderRepository.findById(id);
+        if(!orderOptional.isPresent()){
+            //throw new orderNotfound exception
+            // add something here and over at some of the other apis aswell?
+        }
+        return orderOptional.get();
+    }
+
+    @CrossOrigin(origins = "http://localhost:5000/orders")
+    @DeleteMapping("/delete/{id}")
+    public void deleteProduct(@PathVariable long id) {
+        orderRepository.deleteById(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:5000/orders")
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Object> updateProduct(@RequestBody Order order, @PathVariable long id) {
+
+        Optional<Order> orderOptional = orderRepository.findById(id);
+
+        if (!orderOptional.isPresent())
+            return ResponseEntity.notFound().build();
+
+        order.setId(id);
+
+        orderRepository.save(order);
+
+        return ResponseEntity.noContent().build();
+    }
 
     @PostMapping("/create")
     public ResponseEntity<?> registerOrder(@Valid @RequestBody AddOrderRequest addOrderRequest) {
