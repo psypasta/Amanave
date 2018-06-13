@@ -1,11 +1,13 @@
 package com.example.inventory.model;
 
 import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "order_status")
+public class OrderStatus {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,13 +15,13 @@ public class Role {
     @Enumerated(EnumType.STRING)
     @NaturalId
     @Column(length = 30)
-    private RoleName name;
+    private OrderStatusName name;
 
-    public Role() {
+    public OrderStatus() {
 
     }
 
-    public Role(RoleName name) {
+    public OrderStatus(OrderStatusName name) {
         this.name = name;
     }
 
@@ -31,11 +33,11 @@ public class Role {
         this.id = id;
     }
 
-    public RoleName getName() {
+    public OrderStatusName getName() {
         return name;
     }
 
-    public void setName(RoleName name) {
+    public void setName(OrderStatusName name) {
         this.name = name;
     }
 }

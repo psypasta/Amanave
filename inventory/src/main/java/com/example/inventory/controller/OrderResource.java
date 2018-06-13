@@ -8,16 +8,15 @@ import com.example.inventory.payload.ApiResponse;
 import com.example.inventory.payload.SignUpRequest;
 import com.example.inventory.repository.OrderDetailsRepository;
 import com.example.inventory.repository.OrderRepository;
+import com.example.inventory.repository.OrderStatusRepository;
 import com.example.inventory.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.swing.text.html.Option;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.*;
@@ -30,7 +29,47 @@ public class OrderResource {
     OrderRepository orderRepository;
 
     @Autowired
+    OrderStatusRepository orderStatusRepository;
+
+    @Autowired
     ProductRepository productRepository;
+
+    @GetMapping("/get")
+    public List<Order> retrieveAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    @GetMapping("/get/{id}")
+    public Order retrieveOrder(@PathVariable long id) {
+        Optional<Order> orderOptional = orderRepository.findById(id);
+        if(!orderOptional.isPresent()){
+            //throw new orderNotfound exception
+            // add something here and over at some of the other apis aswell?
+        }
+        return orderOptional.get();
+    }
+
+    @CrossOrigin(origins = "http://localhost:5000/orders")
+    @DeleteMapping("/delete/{id}")
+    public void deleteProduct(@PathVariable long id) {
+        orderRepository.deleteById(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:5000/orders")
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Object> updateProduct(@RequestBody Order order, @PathVariable long id) {
+
+        Optional<Order> orderOptional = orderRepository.findById(id);
+
+        if (!orderOptional.isPresent())
+            return ResponseEntity.notFound().build();
+
+        order.setId(id);
+
+        orderRepository.save(order);
+
+        return ResponseEntity.noContent().build();
+    }
 
     @PostMapping("/create")
     public ResponseEntity<?> registerOrder(@Valid @RequestBody AddOrderRequest addOrderRequest) {
@@ -51,6 +90,11 @@ public class OrderResource {
         }
 
         System.err.println("help");
+
+        OrderStatus orderStatus = orderStatusRepository.findByName(OrderStatusName.WAITING)
+                .orElseThrow(() -> new AppException("Order Status not set."));
+
+        order.setOrderStatus(Collections.singleton(orderStatus));
 
         Order orderResult = orderRepository.save(order);
 

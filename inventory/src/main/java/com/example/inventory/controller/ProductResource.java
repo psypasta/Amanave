@@ -1,13 +1,11 @@
 package com.example.inventory.controller;
 
 import com.example.inventory.exception.AppException;
-import com.example.inventory.model.Product;
-import com.example.inventory.model.Role;
-import com.example.inventory.model.RoleName;
-import com.example.inventory.model.User;
+import com.example.inventory.model.*;
 import com.example.inventory.payload.AddProductRequest;
 import com.example.inventory.payload.ApiResponse;
 import com.example.inventory.payload.SignUpRequest;
+import com.example.inventory.repository.ProductCategoryRepository;
 import com.example.inventory.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +25,9 @@ public class ProductResource {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    ProductCategoryRepository productCategoryRepository;
 
     @GetMapping("/get")
     public List<Product> retrieveAllProduct() {
@@ -79,12 +80,19 @@ public class ProductResource {
                     HttpStatus.BAD_REQUEST);
         }
 
-        //(String name, String articleNumber, String category, BigDecimal price)
-        Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(),
-                                        productRequest.getCategory(), productRequest.getPrice());
+        Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(), productRequest.getPrice());
+
+        Optional<ProductCategories> optionalProductCategoriy = productCategoryRepository.findById(productRequest.getCategory());
+        if(!optionalProductCategoriy.isPresent()){
+            /*
+                    fortsätt här sedan max
+                    Error om man inte hittar category?
+             */
+        }
+
+        product.setCategory(optionalProductCategoriy.get());
 
         Product savedProduct = productRepository.save(product);
-
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/products/{username}")

@@ -8,12 +8,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-/*
-@Table(name = "products", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {
+/*@Table(name = "products", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {               //Item of interest - max
                 "article_number"
         }),
         @UniqueConstraint(columnNames = {
@@ -35,10 +35,24 @@ public class Product extends DateAudit {
     @NotBlank
     @Size(max = 15)
     private String articleNumber;
-
+/*
     @NotBlank
     @Size(max = 40)
     private String category;
+*/
+/*
+    @OneToMany
+    @NotNull
+    @ElementCollection
+    @JoinTable(name = "product_product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_category_id"))
+    private Collection<ProductCategories> productCategories;*/
+
+    //Here JoinColumn states that this entity is the owner of the relationship
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private ProductCategories productCategories;
 
     @Column(precision=10, scale=2)
     @DecimalMax("10000.00")
@@ -52,6 +66,8 @@ public class Product extends DateAudit {
     @OneToOne(fetch = FetchType.LAZY)
     private Unit unit;
 
+
+
   //  @ManyToOne(fetch = FetchType.LAZY)
   //  @JoinColumn(name = "order_id", nullable = false)
   //  private OrderDetails orderDetails;
@@ -60,13 +76,21 @@ public class Product extends DateAudit {
 
     }
 
-    public Product(String name, String articleNumber, String category, BigDecimal price) {
+    public Product(String name, String articleNumber, BigDecimal price) {
         this.name = name;
         this.articleNumber = articleNumber;
-        this.category = category;
         this.price = price;
     }
+
+    public void setCategory(ProductCategories productCategories){
+        this.productCategories = productCategories;
+    }
+
+    public ProductCategories getCategory(){
+        return productCategories;
+    }
 /*
+
     public Order getOrder(){
         return order;
     }
@@ -97,14 +121,6 @@ public class Product extends DateAudit {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String email) {
-        this.category = category;
     }
 
     public BigDecimal getPrice() {

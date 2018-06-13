@@ -29,7 +29,7 @@
     "core-js": "^2.5.4",
     "cors": "^2.8.4",
     "ngx-auth": "^4.0.0",
-    "rxjs": "^6.0.0",
+    "rxjs": "^6.2.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
