@@ -1,6 +1,44 @@
+
+<div class="borderBlue">
+  <div class="dropdown">
+    <button class="dropbtn">Profil</button>
+    <div class="dropdown-content">
+      <b>
+        <a routerLink="/user-profile">Redigera Profil</a>
+        <a routerLink="/login">Logga ut </a>
+      </b>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropbtn">Verktyg</button>
+    <div class="dropdown-content">
+      <b>
+        <a routerLink="/productsList">Se produkter</a>
+        <a routerLink="/usersList">Se användare</a>
+      </b>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropbtn">Uppdrag</button>
+    <div class="dropdown-content">
+      <a routerLink="/createOrder">Skapa order</a>
+      <a routerLink="/activeOrders">Aktiva uppdrag</a>
+      <a routerLink="/completedOrders">Slutförda uppdrag</a>
+
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropbtn">Hjälp</button>
+    <div class="dropdown-content">
+
+
+    </div>
+  </div>
+</div>
+
 <nav>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/productsList">Se Produkter</a>
-  <a routerLink="/usersList">Se Användare</a>
 </nav>
 <router-outlet></router-outlet>

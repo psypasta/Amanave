@@ -1,5 +1,13 @@
-<div *ngIf="!loading">
-<li *ngFor="let user of users" >
-  Id: {{user.id}}, användarnamn: {{user.username}}, Name: {{user.name}}, email: {{user.email}} <button (click) = "editUser()">Ändra</button> <button (click)="deleteUser(user.id)">Radera</button>
-</li>
-</div>
+<ul class="underDashboardLeft">
+  <div>
+    <div *ngIf="!loading">
+      <li *ngFor="let user of users">
+        <br>
+        Id: {{user.id}}, användarnamn: {{user.username}}, Name: {{user.name}}, email: {{user.email}}
+        <button (click)="editUser()">Ändra</button>
+        <button (click)="deleteUser(user.id)">Radera</button>
+        <br>
+      </li>
+    </div>
+  </div>
+</ul>
