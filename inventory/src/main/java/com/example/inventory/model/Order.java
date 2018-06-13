@@ -16,9 +16,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
+// @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Order extends UserDateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GenerateValue(strategy = GenerationType.TABLE)
     private Long id;
 
     @Column
