@@ -1,6 +1,7 @@
 package com.example.inventory.model;
 
 import com.example.inventory.model.audit.DateAudit;
+import com.example.inventory.model.audit.UserDateAudit;
 import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
@@ -21,7 +22,7 @@ import java.util.Objects;
         })
 })*/
 @Table(name = "products")
-public class Product extends DateAudit {
+public class Product extends UserDateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

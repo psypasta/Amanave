@@ -1,7 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Product } from '../model/product';
 import { ProductService } from '../service/product.service';
 import {EmitterService} from '../service/emitter.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +10,12 @@ import {EmitterService} from '../service/emitter.service';
   styleUrls: ['./products.component.css']
 })
 
-export class ProductsComponent implements OnInit{
+export class ProductsComponent implements OnInit {
+  // products = this.productService.getProducts();
+  observableProducts: Observable<Product[]>;
+  products: Product[];
+
+  errorMessage: String;
 
   product: Product = {
     id: 1,
@@ -22,13 +28,20 @@ export class ProductsComponent implements OnInit{
   id: number;
   name: string;
   articleNumber: string;
-  category: string;
+  category: number;
   price: number;
 
   ngOnInit() {
-    // this.getProduct();
+    this.observableProducts = this.productService.getProducts();
+    this.observableProducts.subscribe(
+      products => this.products = products,
+      error =>  this.errorMessage = <any>error);
   }
 
+  onSelect(product: Product): void {
+    this.product = product;
+    console.log(this.product);
+  }
 
   constructor(private productService: ProductService) {}
 
@@ -36,7 +49,6 @@ export class ProductsComponent implements OnInit{
     this.productService.getProduct(1).subscribe(product => {
       this.product = product;
       console.log(this.product);
-
     });
   }
 
@@ -44,5 +56,4 @@ export class ProductsComponent implements OnInit{
     console.log(this.product);
     this.productService.addProduct(this.product).subscribe();
   }
-
 }

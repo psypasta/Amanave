@@ -11,9 +11,7 @@ import { ProductsComponent } from './products/products.component';
 import {ProductService} from './service/product.service';
 import { TokenInterceptor} from './token-interceptor';
 import { AppRoutingModule } from './/app-routing.module';
-import { ProductDetailsComponent } from './product-details/product-details.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { ProductPageComponent } from './product-page/product-page.component';
 import { CategoryComponent } from './category/category.component';
 
 @NgModule({
@@ -24,9 +22,7 @@ import { CategoryComponent } from './category/category.component';
     LoginComponent,
     ProductsComponent,
     TestPageComponent,
-    ProductDetailsComponent,
     UserListComponent,
-    ProductPageComponent,
     CategoryComponent,
   ],
   imports: [
