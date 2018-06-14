@@ -30,4 +30,9 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  createCategory() {
+    console.log(this.category);
+    this.categoryService.addCategory(this.category).subscribe();
+  }
+
 }

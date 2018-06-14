@@ -1,6 +1,18 @@
+<h2>Product id: {{ category.categoryId }} details</h2>
+<div><span>id: </span>{{category.categoryId}}</div>
+<div><span>name: </span>{{category.categoryName}}</div>
 
-<div class="center">
-  <li *ngFor="let product of categorys" >
-    Id: {{category.categoryId}}, Name: {{category.categoryName}}
-  </li>
+<br/>
+
+<div class="form-group">
+  <label >Category name: </label>
+  <input type="text" class="form-control"
+         required
+         [(ngModel)]="category.categoryName" name="categoryName">
 </div>
+
+
+<button (click) = "getCategory()">Get category</button>
+<button (click)="getCategorys()">Get categories</button>
+<button (click)="createCategory()">Create categoryS</button>
+

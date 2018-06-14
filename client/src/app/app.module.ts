@@ -15,6 +15,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { UserListComponent } from './user-list/user-list.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { CategoryComponent } from './category/category.component';
+import { CategorydetailsComponent } from './categorydetails/categorydetails.component';
+import { CategoryPageComponent } from './category-page/category-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { CategoryComponent } from './category/category.component';
     UserListComponent,
     ProductPageComponent,
     CategoryComponent,
+    CategorydetailsComponent,
+    CategoryPageComponent,
   ],
   imports: [
     BrowserModule,

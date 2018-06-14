@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
 
   loggEvent(loggedIn: boolean){
     this.loggedIn = loggedIn;
-    console.log("Här är vi " + loggedIn );
+    console.log('Här är vi ' + loggedIn );
   }
 
   addUsers(){

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
 import {Category} from '../model/category';
 
 const categoryURL = 'http://localhost:5000/category/';
@@ -27,4 +28,7 @@ export class CategoryService {
 
   }
 
+  addCategory(category: Category): Observable<any>{
+    return this.http.post<Category>(categoryURL + 'create', category, httpOptions).pipe();
+  }
 }
