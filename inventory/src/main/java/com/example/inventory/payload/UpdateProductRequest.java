@@ -2,11 +2,13 @@ package com.example.inventory.payload;
 
 import com.example.inventory.model.ProductCategories;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
-
-public class AddProductRequest {
+public class UpdateProductRequest {
         /*"name" : "Bread",
           "articleNumber" : "133-3337",
           "category" : "Butter",

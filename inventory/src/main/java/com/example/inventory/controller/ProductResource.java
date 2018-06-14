@@ -5,6 +5,7 @@ import com.example.inventory.model.*;
 import com.example.inventory.payload.AddProductRequest;
 import com.example.inventory.payload.ApiResponse;
 import com.example.inventory.payload.SignUpRequest;
+import com.example.inventory.payload.UpdateProductRequest;
 import com.example.inventory.repository.ProductCategoryRepository;
 import com.example.inventory.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,16 +54,35 @@ public class ProductResource {
 
     @CrossOrigin(origins = "http://localhost:5000/products")
     @PutMapping("/update/{id}")
-    public ResponseEntity<Object> updateProduct(@RequestBody Product product, @PathVariable long id) {
+    public ResponseEntity<Object> updateProduct(@RequestBody UpdateProductRequest productRequest, @PathVariable long id) {
 
         Optional<Product> productOptional = productRepository.findById(id);
 
         if (!productOptional.isPresent())
             return ResponseEntity.notFound().build();
+/*
+        if(productRepository.existsByArticleNumber(product.getArticleNumber())){
+            return new ResponseEntity(new ApiResponse(false, "Article number is already taken!"),
+                    HttpStatus.BAD_REQUEST);
+        }
+*/
+        // product.setId(id);
+        System.err.println(productRequest.getName());
+        System.err.println(productRequest.getArticleNumber());
+        System.err.println(productRequest.getCategory());
+        System.err.println(productRequest.getPrice());
+
+        Product product = new Product(
+                productRequest.getName(),
+                productRequest.getArticleNumber(),
+                productRequest.getPrice()
+                );
 
         product.setId(id);
 
-        productRepository.save(product);
+        product.setCategory(productRequest.getCategory());
+
+        Product savedProduct = productRepository.save(product);
 
         return ResponseEntity.noContent().build();
     }
@@ -82,7 +102,7 @@ public class ProductResource {
 
         Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(), productRequest.getPrice());
 
-        Optional<ProductCategories> optionalProductCategoriy = productCategoryRepository.findById(productRequest.getCategory());
+        Optional<ProductCategories> optionalProductCategoriy = productCategoryRepository.findById(productRequest.getCategory().getId());
         if(!optionalProductCategoriy.isPresent()){
             /*
                     fortsätt här sedan max

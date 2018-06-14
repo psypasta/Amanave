@@ -17,7 +17,7 @@ public class ProductCategories {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@NaturalId
+    @NaturalId(mutable = true)
     @NotBlank
     @Size(max = 40)
     private String categoryName;
