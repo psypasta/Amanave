@@ -11,8 +11,8 @@ import { ProductsComponent } from './products/products.component';
 import {ProductService} from './service/product.service';
 import { TokenInterceptor} from './token-interceptor';
 import { AppRoutingModule } from './/app-routing.module';
-import { ProductDetailsComponent } from './product-details/product-details.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ import { UserListComponent } from './user-list/user-list.component';
     LoginComponent,
     ProductsComponent,
     TestPageComponent,
-    ProductDetailsComponent,
     UserListComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

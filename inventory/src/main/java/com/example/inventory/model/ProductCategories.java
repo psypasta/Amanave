@@ -17,8 +17,8 @@ public class ProductCategories {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@NaturalId
-    @NotBlank
+    @NaturalId(mutable = true)
+//    @NotBlank
     @Size(max = 40)
     private String categoryName;
 
@@ -27,9 +27,9 @@ public class ProductCategories {
     private Set<Product> products = new HashSet<>(); */
 
     @JsonIgnore
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="productCategories")
-    private Set<Product> products;
-
+    @OneToMany(targetEntity = Product.class, cascade=CascadeType.ALL, mappedBy="productCategories")
+    // @JoinColumn(name = "product")
+    private Set<Product> products = new HashSet<>();
     public ProductCategories() {
 
     }

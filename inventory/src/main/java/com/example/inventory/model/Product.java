@@ -1,6 +1,7 @@
 package com.example.inventory.model;
 
 import com.example.inventory.model.audit.DateAudit;
+import com.example.inventory.model.audit.UserDateAudit;
 import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
@@ -21,19 +22,20 @@ import java.util.Objects;
         })
 })*/
 @Table(name = "products")
-public class Product extends DateAudit {
+public class Product extends UserDateAudit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     @NotBlank
     @Size(max = 40)
     private String name;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     @NotBlank
-    @Size(max = 15)
+    @Size(max = 20)
     private String articleNumber;
 /*
     @NotBlank
@@ -53,7 +55,8 @@ public class Product extends DateAudit {
   /*  @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private ProductCategories productCategories;*/
-    @ManyToOne
+    @ManyToOne(targetEntity = ProductCategories.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
     private ProductCategories productCategories;
 
     @Column(precision=10, scale=2)
@@ -65,10 +68,8 @@ public class Product extends DateAudit {
     //@JoinTable(name = "product_unit"
     //@JoinColumn(name = "id"),
      //       inverseJoinColumns = @JoinColumn(name = "unit_id"))*/
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = Unit.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Unit unit;
-
-
 
   //  @ManyToOne(fetch = FetchType.LAZY)
   //  @JoinColumn(name = "order_id", nullable = false)
@@ -91,16 +92,7 @@ public class Product extends DateAudit {
     public ProductCategories getCategory(){
         return productCategories;
     }
-/*
 
-    public Order getOrder(){
-        return order;
-    }
-
-    public void setOrder(Order order){
-        this.order = order;
-    }
-*/
     public Long getId() {
         return id;
     }
@@ -132,13 +124,7 @@ public class Product extends DateAudit {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-/*
-    public Unit getUnit() { return unit; }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
-    }
-*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

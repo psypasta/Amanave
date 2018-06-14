@@ -1,38 +1,64 @@
-<h2>Product id: {{ product.id }} details</h2>
-<div><span>id: </span>{{product.id}}</div>
-<div><span>name: </span>{{product.name}}</div>
-<div><span>articleNumber: </span>{{product.articleNumber}}</div>
-<div><span>category: </span>{{product.category}}</div>
-<div><span>price: </span>{{product.price}}</div>
+<div class="topleft">
+  <div id="first">
+    <div id="boxSelectedProduct">
+      <h2>Selected Product details:</h2>
+      <div><span>id: </span>{{product.id}}</div>
+      <div><span>name: </span>{{product.name}}</div>
+      <div><span>articleNumber: </span>{{product.articleNumber}}</div>
+      <div><span>category: </span>{{product.category.categoryName}}</div>
+      <div><span>price: </span>{{product.price}}</div>
+    </div>
+    <br/>
+    <h2>Edit Products</h2>
+    <div class="form-group">
+      <label>Product name: </label>
+      <br>
+      <input type="text" class="form-control"
+             required
+             [(ngModel)]="product.name" name="name">
+    </div>
 
-<br/>
+    <div class="form-group">
+      <label>Article number: </label>
+      <input type="text" class="form-control"
+             required
+             [(ngModel)]="product.articleNumber" name="articleNumber">
+      <br>
+    </div>
 
-<div class="form-group">
-<label >Product name: </label>
-<input type="text" class="form-control"
-       required
-       [(ngModel)]="product.name" name="name">
+    <div class="dropdown">
+      <label>Category: </label>
+      <input type="text" class="dropdown-content"
+             required
+             [(ngModel)]="product.category.categoryName" name="category">
+    </div>
+
+    <div class="form-group">
+      <label>Price: </label>
+      <input type="text" class="form-control"
+             required
+             [(ngModel)]="product.price" name="price">
+    </div>
+
+    <button (click)="getProduct()">Get Product</button>
+
+    <button (click)="createProduct()">Create Product</button>
+
+    <button (click)="updateProduct()">Update Product</button>
+  </div>
+
+  <div id="second">
+    <div class="center">
+      <li *ngFor="let product of products" (click)="onSelect(product)">>
+        Id: {{product.id}}, Name: {{product.name}}, ArticleNumber: {{product.articleNumber}}, Category:
+        {{product.category.categoryName}}
+      </li>
+    </div>
+  </div>
+
+  <div id="clear">
+
+
+  </div>
+
 </div>
-
-<div class="form-group">
-<label >Article Number: </label>
-<input type="text" class="form-control"
-       required
-       [(ngModel)]="product.articleNumber" name="articleNumber">
-</div>
-
-<div class="form-group">
-<label >Category: </label>
-<input type="text" class="form-control"
-       required
-       [(ngModel)]="product.category" name="category">
-</div>
-
-<div class="form-group">
-<label >Price: </label>
-<input type="text" class="form-control"
-       required
-       [(ngModel)]="product.price" name="price">
-</div>
-
-<button (click) = "getProduct()">Get Product</button>

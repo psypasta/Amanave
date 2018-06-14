@@ -5,6 +5,7 @@ import com.example.inventory.model.*;
 import com.example.inventory.payload.AddProductRequest;
 import com.example.inventory.payload.ApiResponse;
 import com.example.inventory.payload.SignUpRequest;
+import com.example.inventory.payload.UpdateProductRequest;
 import com.example.inventory.repository.ProductCategoryRepository;
 import com.example.inventory.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,16 +54,35 @@ public class ProductResource {
 
     @CrossOrigin(origins = "http://localhost:5000/products")
     @PutMapping("/update/{id}")
-    public ResponseEntity<Object> updateProduct(@RequestBody Product product, @PathVariable long id) {
+    public ResponseEntity<Object> updateProduct(@RequestBody UpdateProductRequest productRequest, @PathVariable long id) {
 
         Optional<Product> productOptional = productRepository.findById(id);
 
         if (!productOptional.isPresent())
             return ResponseEntity.notFound().build();
+/*
+        if(productRepository.existsByArticleNumber(product.getArticleNumber())){
+            return new ResponseEntity(new ApiResponse(false, "Article number is already taken!"),
+                    HttpStatus.BAD_REQUEST);
+        }
+*/
+        // product.setId(id);
+        System.err.println(productRequest.getName());
+        System.err.println(productRequest.getArticleNumber());
+        System.err.println(productRequest.getCategory());
+        System.err.println(productRequest.getPrice());
+
+        Product product = new Product(
+                productRequest.getName(),
+                productRequest.getArticleNumber(),
+                productRequest.getPrice()
+        );
 
         product.setId(id);
 
-        productRepository.save(product);
+        product.setCategory(productRequest.getCategory());
+
+        Product savedProduct = productRepository.save(product);
 
         return ResponseEntity.noContent().build();
     }
@@ -80,22 +100,36 @@ public class ProductResource {
                     HttpStatus.BAD_REQUEST);
         }
 
-        Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(), productRequest.getPrice());
+        if(!productCategoryRepository.existsByCategoryName(productRequest.getCategory().getCategoryName()) && productCategoryRepository.existsById(productRequest.getCategory().getId())){
+            return new ResponseEntity(new ApiResponse(false, "Category error!"),
+                    HttpStatus.BAD_REQUEST);
+        }
 
-        Optional<ProductCategories> optionalProductCategoriy = productCategoryRepository.findById(productRequest.getCategory());
+        Optional<ProductCategories> optionalProductCategoriy = productCategoryRepository.findById(productRequest.getCategory().getId());
         if(!optionalProductCategoriy.isPresent()){
             /*
                     fortsätt här sedan max
                     Error om man inte hittar category?
              */
+            return new ResponseEntity(new ApiResponse(false, "Category error!"),
+                    HttpStatus.BAD_REQUEST);
         }
 
-        product.setCategory(optionalProductCategoriy.get());
+        Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(), productRequest.getPrice());
 
+        product.setId(productRequest.getId());
+        System.err.println(productRequest.getCategory().getCategoryName());
+        ProductCategories productCategories = new ProductCategories(productRequest.getCategory().getCategoryName());
+        productCategories.setId(productRequest.getCategory().getId());
+        System.err.println(productRequest.getCategory().getCategoryName());
+        product.setCategory(productCategories);
+        System.err.println(productRequest.getId());
+        // product.setId(productRequest.getId());
+        System.err.println(productRequest.getCategory().getCategoryName());
         Product savedProduct = productRepository.save(product);
-
+        System.err.println(productRequest.getCategory().getCategoryName());
         URI location = ServletUriComponentsBuilder
-                .fromCurrentContextPath().path("/products/{username}")
+                .fromCurrentContextPath().path("/products/{product}")
                 .buildAndExpand(savedProduct.getName()).toUri();
 
         return ResponseEntity.created(location).body(new ApiResponse(true, "Product registered successfully"));

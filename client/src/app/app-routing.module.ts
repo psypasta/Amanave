@@ -6,8 +6,10 @@ import { SignUpComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { AppComponent } from './app.component';
-import {UserListComponent} from "./user-list/user-list.component";
-import {ProductDetailsComponent} from "./product-details/product-details.component";
+import {UserListComponent} from './user-list/user-list.component';
+import {CategoryComponent} from './category/category.component';
+import {ProductsComponent} from './products/products.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -16,7 +18,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignUpComponent},
   { path: 'usersList', component: UserListComponent},
-  { path: 'productsList', component: ProductDetailsComponent},
+  { path: 'products', component: ProductsComponent},
+  { path: 'category', component: CategoryComponent}
   ];
 
 @NgModule({

@@ -24,7 +24,7 @@ public class OrderDetails {
     // @NotBlank
     //   @Size(max = 140)
 
-    @ManyToOne(targetEntity = Product.class)
+    @ManyToOne(targetEntity = Product.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name = "product_id", referencedColumnName = "id"),
             @JoinColumn(name = "product_name", referencedColumnName="name")

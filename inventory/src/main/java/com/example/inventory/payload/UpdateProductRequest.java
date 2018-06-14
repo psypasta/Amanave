@@ -2,17 +2,17 @@ package com.example.inventory.payload;
 
 import com.example.inventory.model.ProductCategories;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
-
-public class AddProductRequest {
+public class UpdateProductRequest {
         /*"name" : "Bread",
           "articleNumber" : "133-3337",
           "category" : "Butter",
           "price" : 10.2*/
-    @NotNull
-    private long id;
 
     @NotBlank
     @Size(min = 4, max = 40)
@@ -22,20 +22,12 @@ public class AddProductRequest {
     @Size(min = 3, max = 15)
     private String articleNumber;
 
-    @NotNull
+    @NotBlank
     private ProductCategories category;
 
     @DecimalMax("30.00")
     @NotNull
     private BigDecimal price;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

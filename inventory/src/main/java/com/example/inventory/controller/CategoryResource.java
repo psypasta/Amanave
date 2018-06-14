@@ -38,13 +38,13 @@ public class CategoryResource {
         return productCategoryOptional.get();
     }
 
-    @CrossOrigin(origins = "http://localhost:5000/products")
+    @CrossOrigin(origins = "http://localhost:5000/productcategories")
     @DeleteMapping("/delete/{id}")
     public void deleteProductCategory(@PathVariable long id) {
         productCategoryRepository.deleteById(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:5000/products")
+    @CrossOrigin(origins = "http://localhost:5000/productcategories")
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> updateProductCategory(@RequestBody ProductCategories productCategory, @PathVariable long id) {
 
