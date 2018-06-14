@@ -1,9 +1,11 @@
+import {Category} from './category';
+
 export class Product {
 
   id: number;
   name: string;
   articleNumber: string;
-  category: number;
+  category: Category;
   price: number;
 
 }

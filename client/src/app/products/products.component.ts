@@ -1,8 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Product } from '../model/product';
 import { ProductService } from '../service/product.service';
-import {EmitterService} from '../service/emitter.service';
 import {Observable} from 'rxjs';
+import {Category} from '../model/category';
 
 @Component({
   selector: 'app-products',
@@ -17,19 +17,15 @@ export class ProductsComponent implements OnInit {
 
   errorMessage: String;
 
+  category: Category = { categoryId: 1, categoryName: 'Lamps'};
+
   product: Product = {
     id: 1,
     name: 'Blue Socks',
     articleNumber: '12345-67',
-    category: 1,
+    category: this.category,
     price: 10.61
   };
-
-  id: number;
-  name: string;
-  articleNumber: string;
-  category: number;
-  price: number;
 
   ngOnInit() {
     this.observableProducts = this.productService.getProducts();
