@@ -13,8 +13,6 @@ import { TokenInterceptor} from './token-interceptor';
 import { AppRoutingModule } from './/app-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
 import { CategoryComponent } from './category/category.component';
-import { CategorydetailsComponent } from './categorydetails/categorydetails.component';
-import { CategoryPageComponent } from './category-page/category-page.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +24,6 @@ import { CategoryPageComponent } from './category-page/category-page.component';
     TestPageComponent,
     UserListComponent,
     CategoryComponent,
-    CategorydetailsComponent,
-    CategoryPageComponent,
   ],
   imports: [
     BrowserModule,

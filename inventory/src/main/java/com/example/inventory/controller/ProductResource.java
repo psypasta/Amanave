@@ -101,7 +101,6 @@ public class ProductResource {
         }
 
         Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(), productRequest.getPrice());
-
         Optional<ProductCategories> optionalProductCategoriy = productCategoryRepository.findById(productRequest.getCategory().getId());
         if(!optionalProductCategoriy.isPresent()){
             /*
@@ -111,6 +110,8 @@ public class ProductResource {
         }
 
         product.setCategory(optionalProductCategoriy.get());
+        System.err.println(productRequest.getId());
+        // product.setId(productRequest.getId());
 
         Product savedProduct = productRepository.save(product);
 

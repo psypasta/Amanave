@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     'password' : 'password'
   };
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
   constructor(
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     console.log('Här är vi ' + loggedIn );
   }
 
-  addUsers(){
+  addUsers() {
     console.log(this.max);
     this.userService.addUser(this.max).subscribe(max => {
       console.log(max);
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  deleteUser(){
+  deleteUser() {
    this.userService.deleteUsers(4).subscribe(user => {
 
    });

@@ -36,6 +36,7 @@ export class ProductsComponent implements OnInit {
 
   onSelect(product: Product): void {
     this.product = product;
+    this.product.category = product.category;
     console.log(this.product);
   }
 

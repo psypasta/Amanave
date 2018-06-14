@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Category} from '../model/category';
 
-const categoryURL = 'http://localhost:5000/category/';
+const categoryURL = 'http://localhost:5000/productcategories/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -29,6 +29,6 @@ export class CategoryService {
   }
 
   addCategory(category: Category): Observable<any>{
-    return this.http.post<Category>(categoryURL + 'create', category, httpOptions).pipe();
+    return this.http.post<Category>(categoryURL + 'create', category.categoryName, httpOptions).pipe();
   }
 }

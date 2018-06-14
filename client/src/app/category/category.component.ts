@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Category} from '../model/category';
 import {CategoryService} from '../service/category.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-category',
@@ -17,10 +18,24 @@ export class CategoryComponent implements OnInit {
   id: number;
   name: string;
 
-  ngOnInit() {
-  }
+  oberservableCategorys: Observable<Category[]>;
+  categorys: Category[];
+  selectedCategory: Category;
+
+  errorMessage: String;
 
   constructor(private categoryService: CategoryService) {
+  }
+
+  ngOnInit() {
+    this.oberservableCategorys = this.categoryService.getCategorys();
+    this.oberservableCategorys.subscribe(
+      categorys => this.categorys = categorys,
+      error => this.errorMessage = <any>error);
+  }
+
+  onSelect(category: Category): void {
+    this.selectedCategory = category;
   }
 
   getCategory() {
@@ -34,5 +49,4 @@ export class CategoryComponent implements OnInit {
     console.log(this.category);
     this.categoryService.addCategory(this.category).subscribe();
   }
-
 }
