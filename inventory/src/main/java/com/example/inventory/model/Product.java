@@ -55,7 +55,8 @@ public class Product extends UserDateAudit {
   /*  @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private ProductCategories productCategories;*/
-    @ManyToOne(targetEntity = ProductCategories.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = ProductCategories.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
     private ProductCategories productCategories;
 
     @Column(precision=10, scale=2)
@@ -67,10 +68,8 @@ public class Product extends UserDateAudit {
     //@JoinTable(name = "product_unit"
     //@JoinColumn(name = "id"),
      //       inverseJoinColumns = @JoinColumn(name = "unit_id"))*/
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = Unit.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Unit unit;
-
-
 
   //  @ManyToOne(fetch = FetchType.LAZY)
   //  @JoinColumn(name = "order_id", nullable = false)
@@ -93,16 +92,7 @@ public class Product extends UserDateAudit {
     public ProductCategories getCategory(){
         return productCategories;
     }
-/*
 
-    public Order getOrder(){
-        return order;
-    }
-
-    public void setOrder(Order order){
-        this.order = order;
-    }
-*/
     public Long getId() {
         return id;
     }
@@ -134,13 +124,7 @@ public class Product extends UserDateAudit {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-/*
-    public Unit getUnit() { return unit; }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
-    }
-*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
