@@ -5,7 +5,7 @@
     <div><span>id: </span>{{product.id}}</div>
     <div><span>name: </span>{{product.name}}</div>
     <div><span>articleNumber: </span>{{product.articleNumber}}</div>
-    <div><span>category: </span>{{product.category}}</div>
+    <div><span>category: </span>{{product.category.categoryName}}</div>
     <div><span>price: </span>{{product.price}}</div>
     <br/>
 
@@ -40,12 +40,14 @@
     <button (click)="getProduct()">Get Product</button>
 
     <button (click)="createProduct()">Create Product</button>
+
+    <button (click)="updateProduct()">Update Product</button>
   </div>
 
   <div id="second">
     <div class="center">
       <li *ngFor="let product of products" (click)="onSelect(product)">>
-        Id: {{product.id}}, Name: {{product.name}}
+        Id: {{product.id}}, Name: {{product.name}}, ArticleNumber: {{product.articleNumber}}, Category: {{product.category.categoryName}}
       </li>
     </div>
   </div>

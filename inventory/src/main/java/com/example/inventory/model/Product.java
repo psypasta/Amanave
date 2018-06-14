@@ -23,18 +23,19 @@ import java.util.Objects;
 })*/
 @Table(name = "products")
 public class Product extends UserDateAudit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     @NotBlank
     @Size(max = 40)
     private String name;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     @NotBlank
-    @Size(max = 15)
+    @Size(max = 20)
     private String articleNumber;
 /*
     @NotBlank
@@ -54,7 +55,7 @@ public class Product extends UserDateAudit {
   /*  @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private ProductCategories productCategories;*/
-    @ManyToOne
+    @ManyToOne(targetEntity = ProductCategories.class, cascade = CascadeType.ALL)
     private ProductCategories productCategories;
 
     @Column(precision=10, scale=2)

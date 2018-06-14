@@ -52,4 +52,9 @@ export class ProductsComponent implements OnInit {
     console.log(this.product);
     this.productService.addProduct(this.product).subscribe();
   }
+
+  updateProduct() {
+    console.log(this.product.articleNumber);
+    this.productService.updateProduct(this.product, this.product.id).subscribe();
+  }
 }
