@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Product } from '../model/product';
 import { ProductService } from '../service/product.service';
+import {EmitterService} from '../service/emitter.service';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +15,7 @@ export class ProductsComponent implements OnInit{
     id: 1,
     name: 'Blue Socks',
     articleNumber: '12345-67',
-    category: 'Socks',
+    category: 1,
     price: 10.61
   };
 
@@ -37,6 +38,11 @@ export class ProductsComponent implements OnInit{
       console.log(this.product);
 
     });
+  }
+
+  createProduct() {
+    console.log(this.product);
+    this.productService.addProduct(this.product).subscribe();
   }
 
 }
