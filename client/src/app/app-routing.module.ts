@@ -8,6 +8,8 @@ import { TestPageComponent } from './test-page/test-page.component';
 import { AppComponent } from './app.component';
 import {UserListComponent} from './user-list/user-list.component';
 import {ProductPageComponent} from './product-page/product-page.component';
+import {CategoryComponent} from './category/category.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent},
   { path: 'usersList', component: UserListComponent},
   { path: 'products', component: ProductPageComponent},
+  { path: 'category', component: CategoryComponent}
   ];
 
 @NgModule({

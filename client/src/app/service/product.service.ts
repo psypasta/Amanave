@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { Product } from '../model/product';
-import {User} from "../model/user";
+import {User} from '../model/user';
 
 const productURL = 'http://localhost:5000/products/';
 const httpOptions = {
