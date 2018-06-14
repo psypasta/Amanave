@@ -85,8 +85,8 @@ public class OrderResource {
             Product p = productRepository.findById(iter.next()).get();
             OrderDetails orderDetails = new OrderDetails(p, quantityList.get(i));
             order.addOrderDetails(orderDetails);
-            System.out.println(p.getId());
-            System.out.println(p.getName());
+            //   System.out.println(p.getId());
+            //   System.out.println(p.getName());
         }
 
         System.err.println("help");

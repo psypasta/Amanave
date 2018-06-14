@@ -27,11 +27,11 @@ public class Order extends UserDateAudit {
     @Size(max = 140)
     private String job;
 
-    @OneToMany(targetEntity = OrderDetails.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = OrderDetails.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ElementCollection
     private List<OrderDetails> orderDetails = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(targetEntity = OrderStatus.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "order_order_status",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "order_status_id"))

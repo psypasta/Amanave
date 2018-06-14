@@ -32,9 +32,14 @@ export class ProductsComponent implements OnInit {
     this.observableProducts.subscribe(
       products => this.products = products,
       error =>  this.errorMessage = <any>error);
+    this.product = this.products[0];
+    this.product.category = this.products[0].category;
   }
 
   onSelect(product: Product): void {
+    console.log('here');
+    console.log(product);
+    console.log(this.product);
     this.product = product;
     this.product.category = product.category;
     console.log(this.product);
@@ -50,6 +55,7 @@ export class ProductsComponent implements OnInit {
   }
 
   createProduct() {
+    console.log('here2');
     console.log(this.product);
     this.productService.addProduct(this.product).subscribe();
   }

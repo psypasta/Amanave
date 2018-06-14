@@ -22,7 +22,7 @@ public class AddProductRequest {
     @Size(min = 3, max = 15)
     private String articleNumber;
 
-    @NotBlank
+    @NotNull
     private ProductCategories category;
 
     @DecimalMax("30.00")
