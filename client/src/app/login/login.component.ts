@@ -9,6 +9,13 @@ import { Router} from '@angular/router';
 })
 export class LoginComponent {
 
+  loginYes = false;
+  loginNo = false;
+  credentials = {
+    usernameOrEmail: null,
+    password: null,
+  };
+
   constructor(private authService: AuthService, private router: Router) {
   }
 
@@ -18,15 +25,9 @@ export class LoginComponent {
   loginEvent(loggedIn: boolean) {
     this.logEvent.emit(loggedIn);
     console.log(loggedIn);
-    this.router.navigateByUrl("/usersList");
+    this.router.navigateByUrl('/usersList');
   }
 
-  loginYes = false;
-  loginNo = false;
-  credentials = {
-    usernameOrEmail: null,
-    password: null,
-  };
   login(): void {
     console.log('here i am');
     this.authService.login(this.credentials).subscribe(
@@ -34,11 +35,11 @@ export class LoginComponent {
         localStorage.setItem('token', token.accessToken);
         console.log(localStorage.getItem('token'));
         },
-      error =>{
-        console.log("Login failed")
+      error => {
+        console.log('Login failed');
 
       },
-      ()=>{
+      () => {
         console.log(this.loggedIn);
        this.loggedIn = true;
        this.loginEvent(this.loggedIn);

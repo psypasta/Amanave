@@ -1,10 +1,8 @@
 package com.example.inventory.controller;
 
-import com.example.inventory.exception.AppException;
 import com.example.inventory.model.*;
 import com.example.inventory.payload.AddProductRequest;
 import com.example.inventory.payload.ApiResponse;
-import com.example.inventory.payload.SignUpRequest;
 import com.example.inventory.payload.UpdateProductRequest;
 import com.example.inventory.repository.ProductCategoryRepository;
 import com.example.inventory.repository.ProductRepository;
@@ -14,9 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.net.URI;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +37,8 @@ public class ProductResource {
 
         if (!product.isPresent())
             //throw new UserNotFoundException("id-" + id);
-            System.out.println("id-" + id);
+            System.err.println("product not found!");
+
 
         return product.get();
     }
