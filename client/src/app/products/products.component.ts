@@ -11,8 +11,6 @@ import {Category} from '../model/category';
 })
 
 export class ProductsComponent implements OnInit {
-  // products = this.productService.getProducts();
-  observableProducts: Observable<Product[]>;
   products: Product[];
 
   errorMessage: String;
@@ -39,7 +37,7 @@ export class ProductsComponent implements OnInit {
       () => {
         if (this.products.length !== 0) {
           this.product = this.products[0];
-          this.product.category = this.products[0].category;
+        //  this.product.category = this.products[0].category; behövs denna?
         }
       });
   }

@@ -5,12 +5,14 @@ import com.example.inventory.exception.AppException;
 import com.example.inventory.model.*;
 import com.example.inventory.payload.AddOrderRequest;
 import com.example.inventory.payload.ApiResponse;
+import com.example.inventory.payload.GetOrdersResponse;
 import com.example.inventory.payload.SignUpRequest;
 import com.example.inventory.repository.OrderDetailsRepository;
 import com.example.inventory.repository.OrderRepository;
 import com.example.inventory.repository.OrderStatusRepository;
 import com.example.inventory.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +37,24 @@ public class OrderResource {
     ProductRepository productRepository;
 
     @GetMapping("/get")
-    public List<Order> retrieveAllOrders() {
-        return orderRepository.findAll();
+    @ResponseBody
+    public ResponseEntity<GetOrdersResponse> retrieveAllOrders() {
+
+        List<Order> orderList = orderRepository.findAll();
+
+        for (int i = 0; i < orderList.size(); i++) {
+            System.err.println(orderList.get(i));
+        }
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "application/json; charset=utf-8");
+
+        if(orderList.isEmpty()) {
+            System.err.println("null");
+            return new ResponseEntity<GetOrdersResponse>(null, responseHeaders, HttpStatus.OK);
+        } else {
+            System.err.println("inte null");
+            return new ResponseEntity<GetOrdersResponse>(new GetOrdersResponse(orderList), responseHeaders, HttpStatus.OK);
+        }
     }
 
     @GetMapping("/get/{id}")

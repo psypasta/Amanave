@@ -1,11 +1,15 @@
 import {Product} from './product';
+import {OrderDetailsList, OrderStatusSet} from './order-list';
 
 export class Order {
 
   id: number;
   job: string;
-  quantity: number[];
+  orderDetailsList: OrderDetailsList[];
+  orderStatusSet: OrderStatusSet[];
+/*  quantity: number[];
   products: Product[];
+  */
 
 }
 

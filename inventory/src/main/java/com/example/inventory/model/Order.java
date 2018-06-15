@@ -37,15 +37,6 @@ public class Order extends UserDateAudit {
             inverseJoinColumns = @JoinColumn(name = "order_status_id"))
     private Set<OrderStatus> orderStatusSet = new HashSet<>();
 
-    //   @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "products",
- //           joinColumns = @JoinColumn(name = "order_id"),
- //           inverseJoinColumns = @JoinColumn(name = "id"))
- //   private List<Product> products = new ArrayList<>();
-
-//  @NotNull
-//  private Instant expirationDateTime;
-
     public Order() {
 
     }
@@ -85,31 +76,4 @@ public class Order extends UserDateAudit {
     public void addOrderDetails(OrderDetails orderDetails) {
         this.orderDetails.add(orderDetails);
     }
-
-  //  public List<Product> getProducts() {
-  //      return products;
- //   }
-
- //   public void setProducts(List<Product> products) {
- //       this.products = products;
- //   }
-
-    /*
-    public Instant getExpirationDateTime() {
-        return expirationDateTime;
-    }
-
-    public void setExpirationDateTime(Instant expirationDateTime) {
-        this.expirationDateTime = expirationDateTime;
-    } */
-
-  //  public void addProduct(Product product) {
-    //    products.add(product);
-   //     product.setOrder(this);
-   // }
-
-    //public void removeProduct(Product product) {
-     //   products.remove(product);
-    //    product.setOrder(null);
-   // }
 }

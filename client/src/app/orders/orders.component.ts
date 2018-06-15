@@ -1,7 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../model/order';
 import {OrderService} from '../service/order.service';
+/*
+class SerializationHelper {
+  static toInstance<T>(obj: T, json: string) : T {
+    var jsonObj = JSON.parse(json);
 
+    if (typeof obj["fromJSON"] === "function") {
+      obj["fromJSON"](jsonObj);
+    }
+    else {
+      for (var propName in jsonObj) {
+        obj[propName] = jsonObj[propName]
+      }
+    }
+
+    return obj;
+  }
+}
+*/
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -11,10 +28,13 @@ export class OrdersComponent implements OnInit {
 
   errorMessage: String;
 
-  orders: Order[];
-  order: Order;
+  orders: Order[] = [];
+  order: Order = new Order();
+
+  public isLoading = true;
 
   ngOnInit() {
+
     this.orderService.getOrders().subscribe(
       orders => {
         console.log(orders);
@@ -25,8 +45,11 @@ export class OrdersComponent implements OnInit {
       },
       () => {
         if (this.orders.length !== 0) {
-          this.order = this.orders[0];
-          console.log(this.order.products[0].name);
+          this.order.orderDetailsList = this.orders[0].orderDetailsList;
+          this.order.orderStatusSet = this.orders[0].orderStatusSet;
+          // this.order = this.orders[0];
+          // this.order.products = this.orders[0].products;
+          // console.log(this.order.products[0].name);
         }
       });
   }

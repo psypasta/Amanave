@@ -1,5 +1,7 @@
 <div class="topleft">
-  <div id="first">
+
+  <div *ngIf="isLoading" > loading .... </div>
+  <div *ngIf="!isLoading" id="first" >
     <div id="boxSelectedProduct">
       <h2>Information om vald Order:</h2>
       <div><span>id: </span>id</div>
@@ -11,13 +13,16 @@
       <br>
     </div>
 
-    <div id="second">
+    <div *ngIf="isLoading" > loading .... </div>
+    <div *ngIf="!isLoading" id="second">
       <div class="item1">
         <div class="center">
           <li *ngFor="let order of orders" (click)="onSelect(order)">
             Id: {{order.id}}
             <div>
-              <li *ngFor="let product of order.products"> ProductName: {{product.name}} ProductId: {{product.id}}</li>
+         <!-- <li ng-repeat="artist in artists">{{artist.name}}</li> -->
+              <li *ngFor="let product of order.orderDetailsList.">{{product.}} ProductId: {{product?.id}}</li>
+         <!--     <li *ngFor="let product of order.products"> ProductName: {{product.name}} ProductId: {{product.id}}</li> -->
             </div>
         </li>
       </div>
