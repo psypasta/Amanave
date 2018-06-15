@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { Product } from '../model/product';
-import { ProductService } from '../service/product.service';
+import {Product} from '../model/product';
+import {ProductService} from '../service/product.service';
 import {Observable} from 'rxjs';
 import {Category} from '../model/category';
 
@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
 
   errorMessage: String;
 
-  category: Category = { categoryId: 1, categoryName: 'Lamps'};
+  category: Category = {categoryId: 1, categoryName: 'Lamps'};
 
   product: Product = {
     id: 1,
@@ -28,12 +28,21 @@ export class ProductsComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.observableProducts = this.productService.getProducts();
-    this.observableProducts.subscribe(
-      products => this.products = products,
-      error =>  this.errorMessage = <any>error);
-    this.product = this.products[0];
-    this.product.category = this.products[0].category;
+    this.productService.getProducts().subscribe(
+      products => {
+        console.log(products);
+        this.products = products
+      },
+      error => {
+        this.errorMessage = <any>error;
+      },
+      () => {
+        if (this.products.length != 0) {
+          this.product = this.products[0];
+          this.product.category = this.products[0].category;
+        }
+      })
+
   }
 
   onSelect(product: Product): void {
@@ -45,7 +54,8 @@ export class ProductsComponent implements OnInit {
     console.log(this.product);
   }
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) {
+  }
 
   getProduct() {
     this.productService.getProduct(1).subscribe(product => {
