@@ -14,6 +14,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
 import { CategoryComponent } from './category/category.component';
 import { OrdersComponent } from './orders/orders.component';
+import {OrderService} from './service/order.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { OrdersComponent } from './orders/orders.component';
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [ProductService,
+  providers: [ProductService, OrderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

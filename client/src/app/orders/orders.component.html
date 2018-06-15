@@ -9,16 +9,17 @@
     <div class="form-group">
       <label>Order: </label>
       <br>
-  </div>
+    </div>
 
-  <div id="second">
-    <div class="item1">
-      <div class="center">
-  <!--      <li *ngFor="let order of orders" (click)="onSelect(order)">>
-          Id: {{product.id}}, Name: {{product.name}}, ArticleNumber: {{product.articleNumber}}, Category:
-          {{product.category.categoryName}}
+    <div id="second">
+      <div class="item1">
+        <div class="center">
+          <li *ngFor="let order of orders" (click)="onSelect(order)">
+            Id: {{order.id}}
+            <div>
+              <li *ngFor="let product of order.products"> ProductName: {{product.name}} ProductId: {{product.id}}</li>
+            </div>
         </li>
-  -->
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@ import {Product} from './product';
 
 export class Order {
 
+  id: number;
   job: string;
   quantity: number[];
   products: Product[];
