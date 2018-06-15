@@ -41,6 +41,7 @@ export class OrdersComponent implements OnInit {
         console.log(orders);
         console.log('wtf');
         this.orders = orders;
+        console.log(orders[0]);
       },
       error => {
         this.errorMessage = <any>error;
