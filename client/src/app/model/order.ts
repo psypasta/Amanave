@@ -8,10 +8,7 @@ export class Order {
 
 }
 
-
-{
-
-  /*
+/*
 }
   "id": 1,
   "job": "Customer C4",
