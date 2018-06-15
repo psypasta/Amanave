@@ -21,8 +21,9 @@
             Id: {{order.id}}
             <div>
          <!-- <li ng-repeat="artist in artists">{{artist.name}}</li> -->
-              <li *ngFor="let product of order.orderDetailsList.">{{product.}} ProductId: {{product?.id}}</li>
+              <li *ngFor="let orderDetails of order.orderDetailsList">{{orderDetails.products.forEach()}}</li>
          <!--     <li *ngFor="let product of order.products"> ProductName: {{product.name}} ProductId: {{product.id}}</li> -->
+
             </div>
         </li>
       </div>
