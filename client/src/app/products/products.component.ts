@@ -31,17 +31,17 @@ export class ProductsComponent implements OnInit {
     this.productService.getProducts().subscribe(
       products => {
         console.log(products);
-        this.products = products
+        this.products = products;
       },
       error => {
         this.errorMessage = <any>error;
       },
       () => {
-        if (this.products.length != 0) {
+        if (this.products.length !== 0) {
           this.product = this.products[0];
           this.product.category = this.products[0].category;
         }
-      })
+      });
 
   }
 

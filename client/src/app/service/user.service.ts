@@ -41,7 +41,7 @@ export class UserService {
   }
 
   // put
-  updateProduct(user: User, id: number): Observable<any> {
+  updateUser(user: User, id: number): Observable<any> {
     return this.http.put<User>(userURL + 'update/' + id,  user, httpOptions);
   }
 }

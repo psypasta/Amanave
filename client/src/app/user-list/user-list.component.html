@@ -1,13 +1,41 @@
-<ul class="underDashboardLeft">
-  <div>
-    <div *ngIf="!loading">
-      <li *ngFor="let user of users">
-        <br>
-        Id: {{user.id}}, användarnamn: {{user.username}}, Name: {{user.name}}, email: {{user.email}}
-        <button (click)="editUser()">Ändra</button>
-        <button (click)="deleteUser(user.id)">Radera</button>
-        <br>
-      </li>
+<div class="topleft">
+  <div id="first">
+    <div id="boxSelectedProduct">
+      <h2>Information om vald användare</h2>
+      <div><span>id: </span>{{user.id}}</div>
+      <div><span>användarnamn: </span>{{user.username}}</div>
+      <div><span>förnamn: </span>{{user.name}}</div>
     </div>
+    <br/>
+    <h2>Redigera användare</h2>
+    <div class="form-group">
+      <label>Användarnamn</label>
+      <br>
+      <input type="text" class="form-control"
+             required
+             [(ngModel)]="user.username" name="name">
+    </div>
+
+    <div class="form-group">
+      <label>Förnamn:</label>
+      <input type="text" class="dropdown-content"
+             required
+             [(ngModel)]="user.name" name="fnamn">
+    </div>
+
+    <div id="second">
+      <div *ngIf="!loading">
+        <li *ngFor="let user of users">
+          Id: {{user.id}}, användarnamn: {{user.username}}, Name: {{user.name}}, email: {{user.email}}
+          <br>
+        </li>
+      </div>
+      </div>
+</div>
+
+  <div id="clear">
+
+
+
   </div>
-</ul>
+</div>
