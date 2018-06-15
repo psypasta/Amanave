@@ -2,25 +2,90 @@
   width: 100%;
   background-color: red;
   height: 30px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 #container {
   width: 300px;
   background-color: #ffcc33;
   margin: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
 }
+#boxSelectedProduct{
+  font-style: oblique;
+  border-radius: 10px;
+  background: #418eb2;
+  width: auto;
+  height: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  font-size: medium;
+  padding: 30px;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 #first {
+  font-size: 20px;
+  color: #000000;
   width: 550px;
   float: left;
   height: 300px;
-  background-color: blue;
+  padding: 50px;
+
+
 }
+
 #second {
   width: 550px;
   float: left;
-  height: 300px;
-  background-color: green;
+  height: 1000px;
+  background-color: #69b1db;
+  padding: 30px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 #clear {
   clear: both;
 }
+
+li {
+
+
+  border: 2px solid aquamarine;
+  padding: 20px;
+  width: auto;
+  height: auto;
+
+
+  border-radius: 20px;
+  background: #b0deff;
+  margin: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+

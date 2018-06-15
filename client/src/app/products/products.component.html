@@ -1,17 +1,17 @@
 <div class="topleft">
   <div id="first">
     <div id="boxSelectedProduct">
-      <h2>Selected Product details:</h2>
+      <h2>Information om vald produkt:</h2>
       <div><span>id: </span>{{product.id}}</div>
-      <div><span>name: </span>{{product.name}}</div>
-      <div><span>articleNumber: </span>{{product.articleNumber}}</div>
-      <div><span>category: </span>{{product.category.categoryName}}</div>
-      <div><span>price: </span>{{product.price}}</div>
+      <div><span>namn: </span>{{product.name}}</div>
+      <div><span>artikelnummer: </span>{{product.articleNumber}}</div>
+      <div><span>kategori: </span>{{product.category.categoryName}}</div>
+      <div><span>pris: </span>{{product.price}}</div>
     </div>
     <br/>
-    <h2>Edit Products</h2>
+    <h2>Redigera produkter</h2>
     <div class="form-group">
-      <label>Product name: </label>
+      <label>Produktnamn: </label>
       <br>
       <input type="text" class="form-control"
              required
@@ -19,7 +19,7 @@
     </div>
 
     <div class="form-group">
-      <label>Article number: </label>
+      <label>Artikelnummer: </label>
       <input type="text" class="form-control"
              required
              [(ngModel)]="product.articleNumber" name="articleNumber">
@@ -27,14 +27,14 @@
     </div>
 
     <div class="dropdown">
-      <label>Category: </label>
+      <label>Kategori: </label>
       <input type="text" class="dropdown-content"
              required
              [(ngModel)]="product.category.categoryName" name="category">
     </div>
 
     <div class="form-group">
-      <label>Price: </label>
+      <label>Pris: </label>
       <input type="text" class="form-control"
              required
              [(ngModel)]="product.price" name="price">
@@ -48,11 +48,13 @@
   </div>
 
   <div id="second">
+    <div class="item1">
     <div class="center">
       <li *ngFor="let product of products" (click)="onSelect(product)">>
         Id: {{product.id}}, Name: {{product.name}}, ArticleNumber: {{product.articleNumber}}, Category:
         {{product.category.categoryName}}
       </li>
+    </div>
     </div>
   </div>
 

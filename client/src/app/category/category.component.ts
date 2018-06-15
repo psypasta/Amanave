@@ -49,4 +49,8 @@ export class CategoryComponent implements OnInit {
     console.log(this.category);
     this.categoryService.addCategory(this.category).subscribe();
   }
+  updateCategory() {
+    console.log(this.category);
+    this.categoryService.updateCategory(this.category, this.category.categoryId).subscribe();
+  }
 }
