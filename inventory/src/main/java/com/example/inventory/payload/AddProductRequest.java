@@ -11,8 +11,8 @@ public class AddProductRequest {
           "articleNumber" : "133-3337",
           "category" : "Butter",
           "price" : 10.2*/
-    @NotNull
-    private long id;
+//    @NotNull
+ //   private long id;
 
     @NotBlank
     @Size(min = 4, max = 40)
@@ -28,7 +28,7 @@ public class AddProductRequest {
     @DecimalMax("30.00")
     @NotNull
     private BigDecimal price;
-
+/*
     public long getId() {
         return id;
     }
@@ -36,7 +36,7 @@ public class AddProductRequest {
     public void setId(long id) {
         this.id = id;
     }
-
+ */
     public String getName() {
         return name;
     }

@@ -22,7 +22,7 @@ import java.util.Objects;
         })
 })*/
 @Table(name = "products")
-public class Product extends UserDateAudit {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

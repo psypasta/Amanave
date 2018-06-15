@@ -117,13 +117,13 @@ public class ProductResource {
 
         Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(), productRequest.getPrice());
 
-        product.setId(productRequest.getId());
+        // product.setId(productRequest.getId());
         System.err.println(productRequest.getCategory().getCategoryName());
-        ProductCategories productCategories = new ProductCategories(productRequest.getCategory().getCategoryName());
-        productCategories.setId(productRequest.getCategory().getId());
+        // ProductCategories productCategories = new ProductCategories(productRequest.getCategory().getCategoryName());
+        // productCategories.setId(productRequest.getCategory().getId());
         System.err.println(productRequest.getCategory().getCategoryName());
-        product.setCategory(productCategories);
-        System.err.println(productRequest.getId());
+        product.setCategory(optionalProductCategoriy.get());
+        // System.err.println(productRequest.getId());
         // product.setId(productRequest.getId());
         System.err.println(productRequest.getCategory().getCategoryName());
         Product savedProduct = productRepository.save(product);
