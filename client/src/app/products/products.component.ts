@@ -42,7 +42,6 @@ export class ProductsComponent implements OnInit {
           this.product.category = this.products[0].category;
         }
       });
-
   }
 
   onSelect(product: Product): void {

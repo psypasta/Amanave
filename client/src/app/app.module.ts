@@ -13,6 +13,8 @@ import { TokenInterceptor} from './token-interceptor';
 import { AppRoutingModule } from './/app-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
 import { CategoryComponent } from './category/category.component';
+import { OrdersComponent } from './orders/orders.component';
+import {OrderService} from './service/order.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { CategoryComponent } from './category/category.component';
     TestPageComponent,
     UserListComponent,
     CategoryComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { CategoryComponent } from './category/category.component';
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [ProductService,
+  providers: [ProductService, OrderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
