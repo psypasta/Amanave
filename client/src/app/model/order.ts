@@ -1,5 +1,4 @@
 import {Product} from './product';
-import {OrderDetailsList, OrderStatusSet} from './order-list';
 
 export class Order {
 
@@ -7,10 +6,16 @@ export class Order {
   job: string;
   orderDetailsList: OrderDetailsList[];
   orderStatusSet: OrderStatusSet[];
-/*  quantity: number[];
-  products: Product[];
-  */
+}
 
+export interface OrderDetailsList {
+  products: Product[];
+  // quantity: number[];
+}
+
+export interface OrderStatusSet {
+  id: number;
+  name: string;
 }
 
 /*

@@ -17,11 +17,11 @@
     <div *ngIf="!isLoading" id="second">
       <div class="item1">
         <div class="center">
-          <li *ngFor="let order of orders" (click)="onSelect(order)">
+          <li *ngFor="let order of orders.orderList" (click)="onSelect(order)">
             Id: {{order.id}}
             <div>
          <!-- <li ng-repeat="artist in artists">{{artist.name}}</li> -->
-              <li *ngFor="let orderDetails of order.orderDetailsList">{{orderDetails.products.forEach()}}</li>
+         <!--     <li *ngFor="let orderDetails of order.orderDetailsList">{{orderDetails.products.forEach()}}</li> -->
          <!--     <li *ngFor="let product of order.products"> ProductName: {{product.name}} ProductId: {{product.id}}</li> -->
 
             </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../model/order';
 import {OrderService} from '../service/order.service';
+import {OrderList} from '../model/order-list';
 /*
 class SerializationHelper {
   static toInstance<T>(obj: T, json: string) : T {
@@ -28,7 +29,8 @@ export class OrdersComponent implements OnInit {
 
   errorMessage: String;
 
-  orders: Order[] = [];
+  // orders: Order[] = [];
+  orders: OrderList;
   order: Order = new Order();
 
   public isLoading = true;
@@ -36,11 +38,29 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
 
     this.orderService.getOrders().subscribe(
-      (orders: Order[]) => {
+      orders => {
+        console.log(orders);
+        this.orders = orders;
+      },
+      error => {
+        this.errorMessage = <any>error;
+      },
+      () => {
+        if (this.orders !== undefined) {
+          this.order = this.orders.orderList[0];
+          console.log(this.order);
+          console.log(this.orders);
+          //  this.product.category = this.products[0].category; behövs denna?
+          this.isLoading = false;
+        }
+      });
+/*
+    this.orderService.getOrders().subscribe(
+      (orders: OrderList) => {
         console.log('wtf');
         console.log(orders);
         console.log('wtf');
-        this.orders = orders;
+        this.orders = orders.orderList.orders;
         console.log(orders[0]);
       },
       error => {
@@ -56,7 +76,7 @@ export class OrdersComponent implements OnInit {
           // console.log(this.order.products[0].name);
         }
       });
-    console.log(this.orders.length);
+    console.log(this.orders.length); */
   }
 
   constructor(private orderService: OrderService) {

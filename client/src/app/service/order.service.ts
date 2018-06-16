@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Order} from '../model/order';
 import {map} from 'rxjs/operators';
 import {OrderList} from '../model/order-list';
+import {Product} from '../model/product';
 
 
 const orderURL = 'http://localhost:5000/orders/';
@@ -21,11 +22,11 @@ export class OrderService {
   }
 
   // get all
-  getOrders(): Observable<Order[]> {
-
-    return this.http.get<Order[]>(orderURL + 'get').pipe(map((response: Response) => {
-      return response;
-    }));
+  getOrders(): Observable<any> {
+    return this.http.get<OrderList>(orderURL + 'get/');
+   // return this.http.get<OrderList>(orderURL + 'get').pipe(map((response: Response) => {
+   //   return response;
+   // }));
   }
 
   // get one

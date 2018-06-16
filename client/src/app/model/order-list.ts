@@ -1,21 +1,9 @@
-import { Product } from './product';
-
-export interface OrderDetailsList {
-  products: Product[];
-}
-
-export interface OrderStatusSet {
-  id: number;
-  name: string;
-}
+import { Order } from './order';
 
 export interface OrderList {
 
   orderList:  {
-    id: number;
-    job: string;
-    orderDetailsList: OrderDetailsList[];
-    orderStatusSet: OrderStatusSet[];
+    orders: Order[];
   } ;
 }
 
