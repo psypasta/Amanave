@@ -54,10 +54,6 @@
 
 }
 #second {
-  display: grid;
-  grid-gap: 5px;
-
-
   margin: 30px;
   width: 1080px;
   float: left;

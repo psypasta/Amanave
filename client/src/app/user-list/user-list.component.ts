@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../model/user';
 import {UserService} from '../service/user.service';
+import {Product} from '../model/product';
 
 @Component({
   selector: 'app-user-list',
@@ -8,10 +9,15 @@ import {UserService} from '../service/user.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-
-  loading = true;
   users: User[];
-
+  loading = true;
+  user: User = {
+    username: 'robin',
+    name: 'Robin van Manen',
+    email: 'robin@robin.se',
+    password: 'asd',
+    id: 123
+  };
   constructor(
     private userService: UserService,
   ) {
