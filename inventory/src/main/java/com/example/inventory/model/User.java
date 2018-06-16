@@ -1,6 +1,7 @@
 package com.example.inventory.model;
 
 import com.example.inventory.model.audit.DateAudit;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -18,6 +19,7 @@ import java.util.Set;
                 "email"
         })
 })
+@JsonIgnoreProperties({"createdAt", "updatedAt", "password"})
 public class User extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

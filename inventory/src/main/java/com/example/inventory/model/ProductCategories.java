@@ -1,6 +1,7 @@
 package com.example.inventory.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.util.Set;
 
 @Entity()
 //@Table(name = "product_categories")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProductCategories {
 
     @Id

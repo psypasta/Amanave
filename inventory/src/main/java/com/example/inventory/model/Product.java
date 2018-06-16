@@ -2,6 +2,7 @@ package com.example.inventory.model;
 
 import com.example.inventory.model.audit.DateAudit;
 import com.example.inventory.model.audit.UserDateAudit;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
@@ -22,6 +23,7 @@ import java.util.Objects;
         })
 })*/
 @Table(name = "products")
+@JsonIgnoreProperties({"createdBy", "updatedBy", "createdAt", "updatedAt"})
 public class Product extends DateAudit {
 
     @Id
