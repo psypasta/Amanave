@@ -36,7 +36,7 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
 
     this.orderService.getOrders().subscribe(
-      orders => {
+      (orders: Order[]) => {
         console.log('wtf');
         console.log(orders);
         console.log('wtf');
@@ -47,14 +47,16 @@ export class OrdersComponent implements OnInit {
         this.errorMessage = <any>error;
       },
       () => {
+        console.log(this.orders.length);
         if (this.orders.length !== 0) {
-          this.order.orderDetailsList = this.orders[0].orderDetailsList;
-          this.order.orderStatusSet = this.orders[0].orderStatusSet;
+          // this.order.orderDetailsList = this.orders[0].orderDetailsList;
+          // this.order.orderStatusSet = this.orders[0].orderStatusSet;
           // this.order = this.orders[0];
           // this.order.products = this.orders[0].products;
           // console.log(this.order.products[0].name);
         }
       });
+    console.log(this.orders.length);
   }
 
   constructor(private orderService: OrderService) {
@@ -70,20 +72,20 @@ export class OrdersComponent implements OnInit {
 
 
 
-  getProduct() {
+  getOrder() {
     this.orderService.getOrder(1).subscribe(order => {
       this.order = order;
       console.log(this.order);
     });
   }
 
-  createProduct() {
+  createOrder() {
     console.log('here2');
     console.log(this.order);
     this.orderService.addOrder(this.order).subscribe();
   }
 
-  updateProduct() {
+  updateOrder() {
     console.log(this.order);
     this.orderService.updateOrder(this.order, this.order.id).subscribe();
   }

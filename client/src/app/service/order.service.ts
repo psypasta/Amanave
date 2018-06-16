@@ -22,7 +22,10 @@ export class OrderService {
 
   // get all
   getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(orderURL + 'get').pipe();
+
+    return this.http.get<Order[]>(orderURL + 'get').pipe(map((response: Response) => {
+      return response;
+    }));
   }
 
   // get one
