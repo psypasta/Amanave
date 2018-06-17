@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from '../model/order';
 import {OrderService} from '../service/order.service';
 import {OrderList} from '../model/order-list';
+import {Product} from '../model/product';
 /*
 class SerializationHelper {
   static toInstance<T>(obj: T, json: string) : T {
@@ -29,17 +30,14 @@ export class OrdersComponent implements OnInit {
 
   errorMessage: String;
 
-  // orders: Order[] = [];
-  orders: OrderList;
+  orders: Order[] = [];
+  // orders: OrderList = new OrderList();
   order: Order = new Order();
-
   public isLoading = true;
 
   ngOnInit() {
-
     this.orderService.getOrders().subscribe(
       orders => {
-        console.log(orders);
         this.orders = orders;
       },
       error => {
@@ -47,13 +45,37 @@ export class OrdersComponent implements OnInit {
       },
       () => {
         if (this.orders !== undefined) {
-          this.order = this.orders.orderList[0];
+          this.order = this.orders[0];
+          // this.order.orderDetailsList = this.orders.orderList[0].orderDetailsList;
+          // this.order.orderDetailsList.product = this.orders.orderList[0].orderDetailsList.product;
           console.log(this.order);
           console.log(this.orders);
+          console.log(this.order.orderDetailsList[0].name)
           //  this.product.category = this.products[0].category; behövs denna?
           this.isLoading = false;
         }
       });
+    /*
+    this.orderService.getOrders().subscribe(
+      orders => {
+        this.orderList = orders
+        console.log(orders);
+      },
+      error => {
+        this.errorMessage = <any>error;
+      },
+      () => {
+        if (this.orderList !== undefined) {
+          this.order = this.orderList[0];
+          console.log(this.orderList[0]);
+          console.log(this.orderList);
+          console.log(this.order);
+          console.log(this.orderList);
+
+          //  this.product.category = this.products[0].category; behövs denna?
+          this.isLoading = false;
+        }
+      }); */
 /*
     this.orderService.getOrders().subscribe(
       (orders: OrderList) => {

@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/index';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Order} from '../model/order';
-import {map} from 'rxjs/operators';
 import {OrderList} from '../model/order-list';
-import {Product} from '../model/product';
-
+import {map} from 'rxjs/operators';
 
 const orderURL = 'http://localhost:5000/orders/';
 const httpOptions = {
@@ -22,11 +20,13 @@ export class OrderService {
   }
 
   // get all
-  getOrders(): Observable<any> {
-    return this.http.get<OrderList>(orderURL + 'get/');
-   // return this.http.get<OrderList>(orderURL + 'get').pipe(map((response: Response) => {
-   //   return response;
-   // }));
+  orders: Order[]
+  getOrders(): Observable<Order[]> {
+    // return this.http.get<OrderList>(orderURL + 'get/');
+   return this.http.get<OrderList>(orderURL + 'get').pipe(map((response: OrderList) => {
+     this.orders = response.orderList
+   return this.orders;
+   }));
   }
 
   // get one

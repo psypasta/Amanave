@@ -1,10 +1,7 @@
 import { Order } from './order';
 
-export interface OrderList {
-
-  orderList:  {
-    orders: Order[];
-  } ;
+export class OrderList {
+    orderList: Order[];
 }
 
 

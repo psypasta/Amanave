@@ -1,38 +1,50 @@
 <div class="topleft">
 
-  <div *ngIf="isLoading" > loading .... </div>
-  <div *ngIf="!isLoading" id="first" >
+  <div *ngIf="isLoading"> loading ....</div>
+  <div *ngIf="!isLoading" id="first">
     <div id="boxSelectedProduct">
       <h2>Information om vald Order:</h2>
-      <div><span>id: </span>id</div>
-    </div>
-    <br/>
-    <h2>Redigera order</h2>
-    <div class="form-group">
-      <label>Order: </label>
-      <br>
-    </div>
+      <div><span>id: {{order.id}}</span></div>
+      <div><span>job: {{order.job}}</span></div>
+      <div><span><!-- Products: {{order.orderDetails}} -->
 
-    <div *ngIf="isLoading" > loading .... </div>
-    <div *ngIf="!isLoading" id="second">
-      <div class="item1">
-        <div class="center">
-          <li *ngFor="let order of orders.orderList" (click)="onSelect(order)">
-            Id: {{order.id}}
-            <div>
-         <!-- <li ng-repeat="artist in artists">{{artist.name}}</li> -->
-         <!--     <li *ngFor="let orderDetails of order.orderDetailsList">{{orderDetails.products.forEach()}}</li> -->
-         <!--     <li *ngFor="let product of order.products"> ProductName: {{product.name}} ProductId: {{product.id}}</li> -->
+        <ul>
+          <li *ngFor="let product of order.orderDetailsList">
+            id: {{product.id}},
+            Name: {{product.name}},
+            Category: {{product.category}},
+            Article-number: {{product.articleNumber}}
+          </li>
+        </ul>
 
-            </div>
+      </span></div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading"> loading ....</div>
+  <div *ngIf="!isLoading" id="second">
+    <!-- <div class="item1"> -->
+    <div class="center">
+      <ul>
+        <li *ngFor="let order_d of orders" (click)="onSelect(order)">
+          Id: {{order_d.id}} Job: {{order_d.job}}
+          <!-- <li ng-repeat="artist in artists">{{artist.name}}</li> -->
+          <ul>
+            <li *ngFor="let product of order_d.orderDetailsList">
+              id: {{product.id}},
+              Name: {{product.name}},
+              Category: {{product.category}},
+              Article-number: {{product.articleNumber}}
+            </li>
+          </ul>
+          <!--     <li *ngFor="let product of order.products"> ProductName: {{product.name}} ProductId: {{product.id}}</li> -->
         </li>
-      </div>
+      </ul>
+    </div>
+
+    <div id="clear">
+
+
     </div>
   </div>
-
-  <div id="clear">
-
-
-  </div>
-
 </div>
