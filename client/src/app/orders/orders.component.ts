@@ -50,7 +50,7 @@ export class OrdersComponent implements OnInit {
           // this.order.orderDetailsList.product = this.orders.orderList[0].orderDetailsList.product;
           console.log(this.order);
           console.log(this.orders);
-          console.log(this.order.orderDetailsList[0].name)
+          console.log(this.order.orderDetailsList[0].product.name)
           //  this.product.category = this.products[0].category; behövs denna?
           this.isLoading = false;
         }

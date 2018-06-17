@@ -4,16 +4,17 @@ export class Order {
 
   id: number;
   job: string;
-  orderDetailsList: Product[];
+  // orderDetailsList: Product[];
+  orderDetailsList: OrderDetailsList[];
   orderStatusSet: OrderStatusSet;
 }
-/*
+
 export interface OrderDetailsList {
   id: number;
-
+  product: Product;
   // quantity: number[];
 }
-*/
+
 export interface OrderStatusSet {
   id: number;
   name: string;

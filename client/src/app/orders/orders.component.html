@@ -9,11 +9,11 @@
       <div><span><!-- Products: {{order.orderDetails}} -->
 
         <ul>
-          <li *ngFor="let product of order.orderDetailsList">
-            id: {{product.id}},
-            Name: {{product.name}},
-            Category: {{product.category}},
-            Article-number: {{product.articleNumber}}
+          <li *ngFor="let detail of order.orderDetailsList">
+            id: {{detail.product.id}},
+            Name: {{detail.product.name}},
+            Category: {{detail.product.category.categoryName}},
+            Article-number: {{detail.product.articleNumber}}
           </li>
         </ul>
 
@@ -29,12 +29,13 @@
         <li *ngFor="let order_d of orders" (click)="onSelect(order)">
           Id: {{order_d.id}} Job: {{order_d.job}}
           <!-- <li ng-repeat="artist in artists">{{artist.name}}</li> -->
+
           <ul>
-            <li *ngFor="let product of order_d.orderDetailsList">
-              id: {{product.id}},
-              Name: {{product.name}},
-              Category: {{product.category}},
-              Article-number: {{product.articleNumber}}
+            <li *ngFor="let detail of order_d.orderDetailsList">
+              id: {{detail.product.id}},
+              Name: {{detail.product.name}},
+              Category: {{detail.product.category.categoryName}},
+              Article-number: {{detail.product.articleNumber}}
             </li>
           </ul>
           <!--     <li *ngFor="let product of order.products"> ProductName: {{product.name}} ProductId: {{product.id}}</li> -->
