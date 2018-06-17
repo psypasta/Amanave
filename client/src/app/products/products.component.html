@@ -51,7 +51,7 @@
     <select (change)="onSelectedCategory($event.target.value)">
       <option value="0">--All--</option>
       <option *ngFor="let category of categories" value={{category}}>
-        {{category}}
+        {{category.categoryName}}
       </option>
     </select>
   </div>
