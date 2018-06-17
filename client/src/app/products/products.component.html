@@ -34,9 +34,7 @@
     </div>
     <div class="dropdown">
       <label>Kategori: </label>
-      <input class="dropdown-content"
-             required
-             [(ngModel)]="product.category.categoryName" name="category">
+      <li *ngFor="let product of products" (click)="onSelectedCategory(product)">{{product.category.categoryName}}</li>
     </div>
     <br>
     <button (click)="getProduct()">Get Product</button>
@@ -46,6 +44,16 @@
     <button (click)="updateProduct()">Update Product</button>
 
 
+  </div>
+
+  <div>
+    <label>Summary: </label>
+    <select (change)="onSelectedCategory($event.target.value)">
+      <option value="0">--All--</option>
+      <option *ngFor="let category of categories" value={{category}}>
+        {{category}}
+      </option>
+    </select>
   </div>
 
   <div id="second">

@@ -29,6 +29,12 @@
              required
              [(ngModel)]="user.email" name="emailname">
     </div>
+    <div class="form-group">
+      <label>lösenord:</label>
+      <input type="text" class="form-control"
+             required
+             [(ngModel)]="user.password" name="pass">
+    </div>
 
 
     <button (click)="getUser()">Get user</button>

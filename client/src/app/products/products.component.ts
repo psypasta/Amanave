@@ -3,6 +3,7 @@ import {Product} from '../model/product';
 import {ProductService} from '../service/product.service';
 import {Observable} from 'rxjs';
 import {Category} from '../model/category';
+import {CategoryService} from '../service/category.service';
 
 @Component({
   selector: 'app-products',
@@ -12,9 +13,9 @@ import {Category} from '../model/category';
 
 export class ProductsComponent implements OnInit {
   products: Product[];
-
+  categories: Category[];
   errorMessage: String;
-
+  categoryService: CategoryService;
   category: Category = {categoryId: 1, categoryName: 'Lamps'};
 
   product: Product = {
@@ -26,6 +27,11 @@ export class ProductsComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.categoryService.getCategories().subscribe(
+      category => {
+        this.categories = category;
+      }
+    )
     this.productService.getProducts().subscribe(
       products => {
         console.log(products);
@@ -49,6 +55,9 @@ export class ProductsComponent implements OnInit {
     this.product = product;
     this.product.category = product.category;
     console.log(this.product);
+  }
+  onSelectedCategory(category: Category): void {
+    this.product.category = category;
   }
 
   constructor(private productService: ProductService) {
