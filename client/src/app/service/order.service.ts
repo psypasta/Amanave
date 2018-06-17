@@ -9,8 +9,10 @@ const orderURL = 'http://localhost:5000/orders/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': null})
 };
+
 @Injectable()
 export class OrderService {
+  orders: Order[];
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +22,6 @@ export class OrderService {
   }
 
   // get all
-  orders: Order[]
   getOrders(): Observable<Order[]> {
     // return this.http.get<OrderList>(orderURL + 'get/');
    return this.http.get<OrderList>(orderURL + 'get').pipe(map((response: OrderList) => {
