@@ -21,9 +21,6 @@ public class OrderDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @NotBlank
-    //   @Size(max = 140)
-
     @ManyToOne(targetEntity = Product.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name = "product_id", referencedColumnName = "id"),
@@ -33,15 +30,6 @@ public class OrderDetails {
 
     private int quantity;
 
-    //   @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "products",
-    //           joinColumns = @JoinColumn(name = "order_id"),
-    //           inverseJoinColumns = @JoinColumn(name = "id"))
-    //   private List<Product> products = new ArrayList<>();
-
-//  @NotNull
-//  private Instant expirationDateTime;
-
     public OrderDetails() {
 
     }
@@ -50,7 +38,6 @@ public class OrderDetails {
         this.product = product;
         this.quantity = quantity;
     }
-
 
     public Long getId() {
         return id;
@@ -66,5 +53,13 @@ public class OrderDetails {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

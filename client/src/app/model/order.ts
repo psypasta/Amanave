@@ -12,7 +12,7 @@ export class Order {
 export interface OrderDetailsList {
   id: number;
   product: Product;
-  // quantity: number[];
+  quantity: number[];
 }
 
 export interface OrderStatusSet {
