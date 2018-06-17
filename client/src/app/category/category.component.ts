@@ -10,7 +10,7 @@ import {Product} from '../model/product';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-
+  categories: Category[];
   category: Category = {
     categoryId: 1,
     categoryName: '150w'
@@ -19,8 +19,7 @@ export class CategoryComponent implements OnInit {
   id: number;
   name: string;
 
-  oberservableCategorys: Observable<Category[]>;
-  categorys: Category[];
+  observableCategories: Observable<Category[]>;
   selectedCategory: Category;
 
   errorMessage: String;
@@ -29,10 +28,14 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.oberservableCategorys = this.categoryService.getCategorys();
-    this.oberservableCategorys.subscribe(
-      categorys => this.categorys = categorys,
-      error => this.errorMessage = <any>error);
+    this.observableCategories = this.categoryService.getCategories();
+    this.observableCategories.subscribe(
+      categories => {
+        this.categories = categories;
+      },
+          error => {
+        this.errorMessage = <any>error;
+      });
   }
 
   onSelect(category: Category): void {
@@ -56,6 +59,7 @@ export class CategoryComponent implements OnInit {
     console.log(this.category);
     this.categoryService.addCategory(this.category).subscribe();
   }
+
   updateCategory() {
     console.log(this.category);
     this.categoryService.updateCategory(this.category, this.category.categoryId).subscribe();

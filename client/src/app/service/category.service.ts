@@ -25,15 +25,16 @@ export class CategoryService {
   }
 
   // get all
-  getCategorys(): Observable<Category[]> {
+  getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(categoryURL + 'get');
 
   }
 
-  addCategory(category: Category): Observable<any>{
+  addCategory(category: Category): Observable<any> {
     return this.http.post<Category>(categoryURL + 'create', category.categoryName, httpOptions).pipe();
   }
-  updateCategory(category: Category, id:number): Observable<any> {
+
+  updateCategory(category: Category, id: number): Observable<any> {
     console.log(category.categoryName);
     return this.http.put<Category>(categoryURL + 'update/' + id, category, httpOptions).pipe();
   }

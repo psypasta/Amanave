@@ -26,25 +26,26 @@
       <br>
     </div>
 
-    <div class="dropdown">
-      <label>Kategori: </label>
-      <input type="text" class="dropdown-content"
-             required
-             [(ngModel)]="product.category.categoryName" name="category">
-    </div>
-
     <div class="form-group">
       <label>Pris: </label>
       <input type="text" class="form-control"
              required
              [(ngModel)]="product.price" name="price">
     </div>
-
+    <div class="dropdown">
+      <label>Kategori: </label>
+      <input class="dropdown-content"
+             required
+             [(ngModel)]="product.category.categoryName" name="category">
+    </div>
+    <br>
     <button (click)="getProduct()">Get Product</button>
 
     <button (click)="createProduct()">Create Product</button>
 
     <button (click)="updateProduct()">Update Product</button>
+
+
   </div>
 
   <div id="second">

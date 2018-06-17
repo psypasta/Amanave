@@ -28,7 +28,7 @@ export class UserService {
   }
   // post
   addUser(user: User): Observable<any> {
-    return this.http.post<User>('http://localhost:5000/api/auth/signup', user, httpOptions);
+    return this.http.post<User>('http://localhost:5000/api/auth/signup', user, httpOptions).pipe();
   }
   // delete
   deleteUsers(id: number): Observable<User> {
