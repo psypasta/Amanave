@@ -1,5 +1,6 @@
 <div class="topleft">
-  <div id="first">
+  <div *ngIf="loading" > loading .... </div>
+  <div *ngIf="!loading" id="first">
     <div id="boxSelectedProduct">
       <h2>Information om vald användare</h2>
       <div><span>id: </span>{{user.id}}</div>
@@ -37,7 +38,10 @@
     <button (click)="updateUser()">Update user</button>
   </div>
 
-  <div id="second">
+
+
+  <div *ngIf="loading" > loading .... </div>
+  <div *ngIf="!loading" id="second">
     <div class="center">
       <li *ngFor="let user of users" (click)="onSelect(user)">>
         Id: {{user.id}}, användarnamn: {{user.username}}, Name: {{user.name}}, email: {{user.email}}

@@ -28,6 +28,8 @@ export class UserListComponent implements OnInit {
       () => {
         if (this.users.length !== 0) {
           this.user = this.users[0];
+
+          this.loading = false;
         }
       }
     );
@@ -52,9 +54,7 @@ export class UserListComponent implements OnInit {
     });
   }
   createUser() {
-    this.userService.addUser(1).subscribe(user => {
-      this.user = user;
-    });
+    this.userService.addUser(this.user).subscribe();
   }
   getUsers() {
     this.userService.getUsers().subscribe(users => {
