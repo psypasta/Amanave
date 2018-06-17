@@ -48,13 +48,11 @@
   </div>
 
   <div id="second">
-    <div class="item1">
     <div class="center">
-      <li *ngFor="let product of products" (click)="onSelect(product)">>
+      <li *ngFor="let product of products" (click)="onSelect(product)">
         Id: {{product.id}}, Name: {{product.name}}, ArticleNumber: {{product.articleNumber}}, Category:
         {{product.category.categoryName}}
       </li>
-    </div>
     </div>
   </div>
 

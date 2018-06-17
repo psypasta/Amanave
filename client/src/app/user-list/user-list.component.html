@@ -18,24 +18,27 @@
 
     <div class="form-group">
       <label>Förnamn:</label>
-      <input type="text" class="dropdown-content"
+      <input type="text" class="form-control"
              required
-             [(ngModel)]="user.name" name="fnamn">
+             [(ngModel)]="user.name" name="name">
     </div>
+    <button (click)="getUser()">Get user</button>
 
-    <div id="second">
-      <div *ngIf="!loading">
-        <li *ngFor="let user of users">
-          Id: {{user.id}}, användarnamn: {{user.username}}, Name: {{user.name}}, email: {{user.email}}
-          <br>
-        </li>
-      </div>
-      </div>
-</div>
+    <button (click)="createUser()">Create user</button>
 
+    <button (click)="updateUser()">Update user</button>
+  </div>
+
+  <div id="second">
+    <div class="center">
+      <li *ngFor="let user of users" (click)="onSelect(user)">>
+        Id: {{user.id}}, användarnamn: {{user.username}}, Name: {{user.name}}, email: {{user.email}}
+      </li>
+    </div>
+  </div>
   <div id="clear">
-
-
 
   </div>
 </div>
+
+

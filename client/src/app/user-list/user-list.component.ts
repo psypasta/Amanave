@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../model/user';
 import {UserService} from '../service/user.service';
 import {Product} from '../model/product';
+import {Category} from '../model/category';
 
 @Component({
   selector: 'app-user-list',
@@ -11,37 +12,59 @@ import {Product} from '../model/product';
 export class UserListComponent implements OnInit {
   users: User[];
   loading = true;
-  user: User = {
-    username: 'robin',
-    name: 'Robin van Manen',
-    email: 'robin@robin.se',
-    password: 'asd',
-    id: 123
-  };
+  user: User;
+
+  errorMessage: string;
+
+  ngOnInit() {
+    this.userService.getUsers().subscribe(
+      users => {
+        console.log(users + 'hello');
+        this.users = users;
+      },
+      error => {
+        this.errorMessage = <any>error;
+      },
+      () => {
+        if (this.users.length !== 0) {
+          this.user = this.users[0];
+        }
+      }
+    );
+  }
+
   constructor(
     private userService: UserService,
   ) {
   }
-
-  ngOnInit() {
-    this.getUsers();
+  onSelect(user: User): void {
+    this.user = user;
+    console.log('here');
+    console.log(user);
+    console.log(this.user);
+    this.user = user;
+    console.log(this.user);
   }
-
+  getUser() {
+    this.userService.getUser(1).subscribe(user => {
+      this.user = user;
+      console.log(this.user);
+    });
+  }
+  createUser() {
+    this.userService.addUser(1).subscribe(user => {
+      this.user = user;
+    });
+  }
   getUsers() {
     this.userService.getUsers().subscribe(users => {
-        this.users = users;
-      },
-      error => {
-      },
-      () => {
-        this.loading = false;
-      });
+      this.users = users;
+      console.log(this.user);
+    });
   }
-
-  editUser() {
-    console.log('This function, it does nothing');
+  updateUser() {
+    this.userService.updateUser(this.user, this.user.id).subscribe();
   }
-
   deleteUser(id: number) {
     this.userService.deleteUsers(id).subscribe(data => {
 

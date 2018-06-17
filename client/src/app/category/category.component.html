@@ -22,7 +22,7 @@
 
   <div id="second">
     <div class="center">
-      <li *ngFor="let category of categorys">
+      <li *ngFor="let category of categorys" (click)="onSelect(category)">
         Id: {{category.categoryId}}, Name: {{category.categoryName}}
       </li>
     </div>

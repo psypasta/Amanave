@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Category} from '../model/category';
 import {CategoryService} from '../service/category.service';
 import {Observable} from 'rxjs';
+import {Product} from '../model/product';
 
 @Component({
   selector: 'app-category',
@@ -36,6 +37,12 @@ export class CategoryComponent implements OnInit {
 
   onSelect(category: Category): void {
     this.selectedCategory = category;
+    console.log('here');
+    console.log(category);
+    console.log(this.category);
+    this.category.categoryId = category.categoryId;
+    this.category.categoryName = category.categoryName;
+    console.log(this.category);
   }
 
   getCategory() {

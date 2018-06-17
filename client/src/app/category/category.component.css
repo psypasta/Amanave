@@ -55,7 +55,9 @@
 }
 
 #second {
-  width: 550px;
+
+  margin: 30px;
+  width: 1080px;
   float: left;
   height: 1000px;
   background-color: #69b1db;
