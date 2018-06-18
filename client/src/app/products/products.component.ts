@@ -26,6 +26,10 @@ export class ProductsComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.getProducts();
+  }
+
+  getProducts() {
     this.productService.getProducts().subscribe(
       products => {
         console.log(products);
@@ -37,7 +41,7 @@ export class ProductsComponent implements OnInit {
       () => {
         if (this.products.length !== 0) {
           this.product = this.products[0];
-        //  this.product.category = this.products[0].category; behövs denna?
+          //  this.product.category = this.products[0].category; behövs denna?
         }
       });
   }
@@ -64,7 +68,15 @@ export class ProductsComponent implements OnInit {
   createProduct() {
     console.log('here2');
     console.log(this.product);
-    this.productService.addProduct(this.product).subscribe();
+    this.productService.addProduct(this.product).subscribe(products => {
+      this.products = products;
+    },
+      error => {
+      },
+      () => {
+        // this.loading = false;
+        this.getProducts();
+      });
   }
 
   updateProduct() {
