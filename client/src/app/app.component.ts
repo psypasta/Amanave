@@ -1,8 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import {User} from './model/user';
 import {UserService} from './service/user.service';
-import {Product} from './model/product';
-import {EventEmitter} from "@angular/core";
 
 @Component({
   selector: 'app-root',

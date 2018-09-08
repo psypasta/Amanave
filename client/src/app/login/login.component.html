@@ -1,25 +1,33 @@
-<div class="center">
-<h2>Login</h2>
 
-<div class="form-group">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Third Line</span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon">menu</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="center">
+
+
   <label>Användarnamn / mail:</label>
   <br>
   <input type="text" class="form-control"
          required [(ngModel)]="credentials.usernameOrEmail" name="usernameOrEmail" #name="ngModel">
-</div>
-<div class="form-group">
-  <label>Lösenord:</label>
+
+  <div class="form-control">
+    <label>Lösenord:</label>
+    <br>
+    <input type="password" class="form-control"
+           required
+           [(ngModel)]="credentials.password" name="password">
+  </div>
   <br>
-  <input type="password" class="form-control"
-         required
-         [(ngModel)]="credentials.password" name="password">
-</div>
-<br>
-<button (click)="login()">Log in</button>
-<div *ngIf="loginYes">You are Winner!!</div>
-<div *ngIf="loginNo">You are a LOSE!!</div>
-<div>
-  <br>
-  Har du inget konto? <a routerLink="/signup">Registrera</a> här!
-</div>
+  <a mat-button>login</a>
+  <div *ngIf="loginYes">You are Winner!!</div>
+  <div *ngIf="loginNo">You are a LOSE!!</div>
+  <div>
+    <br>
+    Har du inget konto? <a routerLink="/signup">Registrera</a> här!
+  </div>
 </div>
