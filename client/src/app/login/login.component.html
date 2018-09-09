@@ -1,7 +1,7 @@
 
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Third Line</span>
+      <span>SERVENTUS</span>
       <span class="example-spacer"></span>
       <mat-icon class="example-icon">menu</mat-icon>
     </mat-toolbar-row>
@@ -23,7 +23,7 @@
            [(ngModel)]="credentials.password" name="password">
   </div>
   <br>
-  <a mat-button>login</a>
+  <button mat-button (click)="login()">Login</button>
   <div *ngIf="loginYes">You are Winner!!</div>
   <div *ngIf="loginNo">You are a LOSE!!</div>
   <div>

@@ -19,6 +19,7 @@ import {OrdersComponent} from './orders/orders.component';
 import {OrderService} from './service/order.service';
 import {MaterialModule} from './material';
 import {MatToolbarModule} from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {MatToolbarModule} from '@angular/material';
     AppRoutingModule,
     MaterialModule,
     MatToolbarModule,
+    MatTabsModule
   ],
   providers: [ProductService, OrderService,
     {
