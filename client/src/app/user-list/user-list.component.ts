@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../model/user';
 import {UserService} from '../service/user.service';
 import {Product} from '../model/product';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -19,7 +20,7 @@ export class UserListComponent implements OnInit {
     id: 123
   };
   constructor(
-    private userService: UserService,
+    private userService: UserService,private router: Router
   ) {
   }
 
@@ -39,6 +40,7 @@ export class UserListComponent implements OnInit {
   }
 
   editUser() {
+    this.router.navigate(['./products']);
     console.log('This function, it does nothing');
   }
 
@@ -51,6 +53,8 @@ export class UserListComponent implements OnInit {
       () => {
         this.getUsers();
       });
+  }
+  getTimeLoaded() {
   }
 
 }

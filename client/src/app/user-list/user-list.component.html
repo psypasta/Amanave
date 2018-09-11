@@ -4,17 +4,17 @@
     <mat-tab-group>
       <mat-tab label="Produkter">
         <ng-template matTabContent>
-          Content 1 - Loaded: {{getTimeLoaded(1) | date:'medium'}}
+          {{getTimeLoaded(1) | date:'medium'}}
         </ng-template>
       </mat-tab>
       <mat-tab label="Användare">
         <ng-template matTabContent>
-          Content 2 - Loaded: {{getTimeLoaded(2) | date:'medium'}}
+          {{getTimeLoaded(2) | date:'medium'}}
         </ng-template>
       </mat-tab>
-      <mat-tab label="Third">
+      <mat-tab label="Orders">
         <ng-template matTabContent>
-          Content 3 - Loaded: {{getTimeLoaded(3) | date:'medium'}}
+          {{getTimeLoaded(3) | date:'medium'}}
         </ng-template>
       </mat-tab>
     </mat-tab-group>
@@ -24,45 +24,36 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-
-<div class="topleft">
-  <div id="first">
-    <div id="boxSelectedProduct">
-      <h2>Information om vald användare</h2>
-      <div><span>id: </span>{{user.id}}</div>
-      <div><span>användarnamn: </span>{{user.username}}</div>
-      <div><span>förnamn: </span>{{user.name}}</div>
-    </div>
-    <br/>
-    <h2>Redigera användare</h2>
-    <div class="form-group">
-      <label>Användarnamn</label>
-      <br>
-      <input type="text" class="form-control"
-             required
-             [(ngModel)]="user.username" name="name">
-    </div>
-
-    <div class="form-group">
-      <label>Förnamn:</label>
-      <input type="text" class="dropdown-content"
-             required
-             [(ngModel)]="user.name" name="fnamn">
-    </div>
-
-    <div id="second">
+<div class="grid-container">
+  <a *ngFor="let user of users">
+    <div class="grid-item"></div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
       <div *ngIf="!loading">
-        <li *ngFor="let user of users">
-          Id: {{user.id}}, användarnamn: {{user.username}}, Name: {{user.name}}, email: {{user.email}}
-          <br>
-        </li>
+      <mat-card-title>{{user.name}}</mat-card-title>
+      <mat-card-subtitle>{{user.id}}</mat-card-subtitle>
       </div>
-      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Beskrivning
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>VIEW</button>
+      <button mat-button (click)="editUser()">EDIT</button>
+      <button mat-button>DELETE</button>
+    </mat-card-actions>
+  </mat-card>
+  <br/>
+  </a>
+
 </div>
 
-  <div id="clear">
+<div id="clear">
 
 
-
-  </div>
 </div>
+
+
