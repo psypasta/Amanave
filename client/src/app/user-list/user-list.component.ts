@@ -40,7 +40,7 @@ export class UserListComponent implements OnInit {
   }
 
   editUser() {
-    this.router.navigate(['./products']);
+    // this.router.navigate(['./products']);
     console.log('This function, it does nothing');
   }
 
