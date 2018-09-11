@@ -20,7 +20,7 @@ export class UserListComponent implements OnInit {
     id: 123
   };
   constructor(
-    private userService: UserService,private router: Router
+    private userService: UserService,
   ) {
   }
 
@@ -55,6 +55,7 @@ export class UserListComponent implements OnInit {
       });
   }
   getTimeLoaded() {
+
   }
 
 }

@@ -1,29 +1,3 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>SERVENTUS</span>
-    <mat-tab-group>
-      <mat-tab label="Produkter">
-        <ng-template matTabContent>
-          {{getTimeLoaded(1) | date:'medium'}}
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Användare">
-        <ng-template matTabContent>
-          {{getTimeLoaded(2) | date:'medium'}}
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Orders">
-        <ng-template matTabContent>
-          {{getTimeLoaded(3) | date:'medium'}}
-        </ng-template>
-      </mat-tab>
-    </mat-tab-group>
-
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon">menu</mat-icon>
-  </mat-toolbar-row>
-</mat-toolbar>
-
 <div class="grid-container">
   <a *ngFor="let user of users">
     <div class="grid-item"></div>

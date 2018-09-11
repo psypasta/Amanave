@@ -22,6 +22,8 @@ import {MatToolbarModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     OrdersComponent,
     CategoryComponent,
     LoginComponent,
+    TopBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     MatTabsModule,
     MatCardModule,
     NoopAnimationsModule,
+    MatTableModule,
   ],
   providers: [ProductService, OrderService,
     {

@@ -1,6 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
 import {User} from './model/user';
 import {UserService} from './service/user.service';
+import {Router} from '@angular/router';
+import {LoginComponent} from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,6 @@ export class AppComponent implements OnInit {
 
   title = 'app';
   users: User[] = null;
-  loggedIn = false;
 
   max: User = {
     id: null,
@@ -25,14 +26,16 @@ export class AppComponent implements OnInit {
 
   }
   constructor(
-    private userService: UserService,
+    private userService: UserService, private router: Router
   ) { }
 
   loggEvent(loggedIn: boolean){
     this.loggedIn = loggedIn;
     console.log('Här är vi ' + loggedIn );
   }
-
+  getProductView() {
+    this.router.navigate(['./products']);
+  }
   addUsers() {
     console.log(this.max);
     this.userService.addUser(this.max).subscribe(max => {
