@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -57,6 +58,8 @@ public class User extends DateAudit {
         this.username = username;
         this.email = email;
         this.password = password;
+        setCreatedAt(Instant.now());
+        setUpdatedAt(Instant.now());
     }
 
     public Long getId() {
