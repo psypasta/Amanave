@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -7,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopBarComponent implements OnInit {
 
-  loggedIn = logg;
-  constructor() { }
+  loggedIn: boolean;
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.loggedIn = message)
   }
 
 }

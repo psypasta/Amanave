@@ -24,6 +24,7 @@ import {MatCardModule} from '@angular/material/card';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import {DataService} from './data.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     NoopAnimationsModule,
     MatTableModule,
   ],
-  providers: [ProductService, OrderService,
+  providers: [ProductService, OrderService, DataService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

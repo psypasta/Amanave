@@ -1,14 +1,8 @@
-
+<app-top-bar></app-top-bar>
 
 <div class="padding">
-  <div *ngIf="loggedIn">
     <app-test-page>[loggedIn]="loggedIn"</app-test-page>
-  </div>
-  <div class="center" *ngIf="!loggedIn">
-    <app-login
-      [loggedIn]="loggedIn"
-      (logEvent)="loggEvent($event)">
-    </app-login>
+  <div class="center">
   </div>
 </div>
 

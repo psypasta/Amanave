@@ -28,11 +28,11 @@ export class AppComponent implements OnInit {
   constructor(
     private userService: UserService, private router: Router
   ) { }
-
+/*
   loggEvent(loggedIn: boolean){
     this.loggedIn = loggedIn;
     console.log('Här är vi ' + loggedIn );
-  }
+  }*/
   getProductView() {
     this.router.navigate(['./products']);
   }

@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { Router} from '@angular/router';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +17,15 @@ export class LoginComponent {
     password: null,
   };
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private data: DataService, private authService: AuthService, private router: Router) {
   }
 
   @Input()loggedIn;
   @Output() logEvent = new EventEmitter<boolean>();
 
   loginEvent(loggedIn: boolean) {
-    this.logEvent.emit(loggedIn);
+    // this.logEvent.emit(loggedIn);
+    this.data.changeMessage(loggedIn);
     console.log(loggedIn);
     this.router.navigateByUrl('/usersList');
   }
