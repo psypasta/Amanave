@@ -22,6 +22,14 @@ import {MatToolbarModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { CreateUserComponent } from './create-user/create-user.component';
+import {
+  MatInputModule,
+  MatDialogModule,
+  MatProgressSpinnerModule,
+  MatButtonModule,
+  MatDialog
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,6 +44,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     OrdersComponent,
     CategoryComponent,
     LoginComponent,
+    CreateUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,8 +57,13 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     MatTabsModule,
     MatCardModule,
     NoopAnimationsModule,
+    MatInputModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatButtonModule
   ],
-  providers: [ProductService, OrderService,
+  entryComponents: [CreateUserComponent],
+  providers: [MatDialog, ProductService, OrderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

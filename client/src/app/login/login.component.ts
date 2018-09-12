@@ -37,6 +37,7 @@ export class LoginComponent {
         },
       error => {
         console.log('Login failed');
+        this.loginNo = true;
 
       },
       () => {

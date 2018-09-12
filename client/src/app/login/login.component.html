@@ -24,8 +24,7 @@
   </div>
   <br>
   <button mat-button (click)="login()">Login</button>
-  <div *ngIf="loginYes">You are Winner!!</div>
-  <div *ngIf="loginNo">You are a LOSE!!</div>
+  <div class="fail" *ngIf="loginNo">Fel användarnamn eller lösenord</div>
   <div>
     <br>
     Har du inget konto? <a routerLink="/signup">Registrera</a> här!
