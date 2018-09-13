@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,10 @@ export class LoginComponent {
     password: null,
   };
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private toastr: ToastrService,
+    private authService: AuthService,
+    private router: Router) {
   }
 
   @Input()loggedIn;

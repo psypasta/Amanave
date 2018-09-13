@@ -5,6 +5,8 @@ import {Product} from '../model/product';
 import { Router} from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {CreateUserComponent} from '../create-user/create-user.component';
+import {UpdateUserComponent} from '../update-user/update-user.component';
+import {DeleteUserComponent} from '../delete-user/delete-user.component';
 
 @Component({
   selector: 'app-user-list',
@@ -49,20 +51,31 @@ export class UserListComponent implements OnInit {
       this.getUsers();
     });
   }
-  editUser() {
-    this.router.navigate(['./products']);
+  editUser(user) {
+    console.log('här ligger ' + user.username);
+    const dialogRef = this.dialog.open(UpdateUserComponent, {
+      width: '250px',
+      data: {user: user}
+    });
+    dialogRef.componentInstance.user = user;
+
+    dialogRef.afterClosed().subscribe(newUser => {
+      this.getUsers();
+    });
     console.log('This function, it does nothing');
   }
 
-  deleteUser(id: number) {
-    this.userService.deleteUsers(id).subscribe(data => {
-
-      },
-      error => {
-      },
-      () => {
-        this.getUsers();
-      });
+  deleteUser(user) {
+    console.log('här ligger ' + user.username);
+    const dialogRef = this.dialog.open(DeleteUserComponent, {
+      width: '250px',
+      data: {user: user}
+    });
+    dialogRef.componentInstance.user = user;
+    dialogRef.afterClosed().subscribe(newUser => {
+      this.getUsers();
+    });
+    console.log('This function, it does nothing');
   }
   getTimeLoaded() {
   }

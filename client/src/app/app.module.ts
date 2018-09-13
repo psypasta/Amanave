@@ -30,6 +30,13 @@ import {
   MatButtonModule,
   MatDialog
 } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
+
 
 @NgModule({
   declarations: [
@@ -45,8 +52,14 @@ import {
     CategoryComponent,
     LoginComponent,
     CreateUserComponent,
+    UpdateUserComponent,
+    DeleteUserComponent,
   ],
   imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     BrowserModule,
@@ -62,7 +75,7 @@ import {
     MatProgressSpinnerModule,
     MatButtonModule
   ],
-  entryComponents: [CreateUserComponent],
+  entryComponents: [CreateUserComponent, UpdateUserComponent, DeleteUserComponent],
   providers: [MatDialog, ProductService, OrderService,
     {
       provide: HTTP_INTERCEPTORS,
