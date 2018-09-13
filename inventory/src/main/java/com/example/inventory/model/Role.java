@@ -2,6 +2,7 @@ package com.example.inventory.model;
 
 import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
+// import java.util.Collection;
 
 @Entity
 @Table(name = "roles")
@@ -14,7 +15,10 @@ public class Role {
     @NaturalId
     @Column(length = 30)
     private RoleName name;
-
+/*
+    @ManyToMany(mappedBy = "roles")
+    private Collection<User> users;
+*/
     public Role() {
 
     }
