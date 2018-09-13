@@ -1,0 +1,15 @@
+
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>SERVENTUS</span>
+    <div *ngIf="loggedIn">
+      <button mat-button (click)="getProductView()">Products</button>
+      <button mat-button>Users</button>
+      <button mat-button>Orders</button>
+    </div>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon">menu</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+

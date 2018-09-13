@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -85,6 +86,9 @@ public class Product extends DateAudit {
         this.name = name;
         this.articleNumber = articleNumber;
         this.price = price;
+        setCreatedAt(Instant.now());
+        setUpdatedAt(Instant.now());
+        setCategory(new ProductCategories("Test"));
     }
 
     public void setCategory(ProductCategories productCategories){

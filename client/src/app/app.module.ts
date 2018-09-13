@@ -1,9 +1,7 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {Component} from '@angular/core';
-
-import {HTTP_INTERCEPTORS, HttpClientModule, HttpClient} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {TestPageComponent} from './test-page/test-page.component';
@@ -34,9 +32,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { UpdateUserComponent } from './update-user/update-user.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 
+import {MatTableModule} from '@angular/material/table';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import {DataService} from './data.service';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
     CreateUserComponent,
     UpdateUserComponent,
     DeleteUserComponent,
+    TopBarComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -73,17 +75,18 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
     MatInputModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
   ],
   entryComponents: [CreateUserComponent, UpdateUserComponent, DeleteUserComponent],
-  providers: [MatDialog, ProductService, OrderService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
-  ],
+  providers: [{provide: APP_BASE_HREF, useValue: '/' },
+    DataService, MatDialog, ProductService, OrderService,
+              {
+                provide: HTTP_INTERCEPTORS,
+                useClass: TokenInterceptor,
+                multi: true
+              }
+             ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

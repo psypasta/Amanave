@@ -9,10 +9,6 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class UpdateProductRequest {
-        /*"name" : "Bread",
-          "articleNumber" : "133-3337",
-          "category" : "Butter",
-          "price" : 10.2*/
 
     @NotBlank
     @Size(min = 4, max = 40)

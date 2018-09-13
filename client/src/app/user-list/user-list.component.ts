@@ -24,7 +24,9 @@ export class UserListComponent implements OnInit {
     id: 123
   };
   constructor(
-    private userService: UserService, private router: Router, public dialog: MatDialog
+    private userService: UserService,
+    private router: Router,
+    public dialog: MatDialog,
   ) {
   }
 
@@ -78,6 +80,7 @@ export class UserListComponent implements OnInit {
     console.log('This function, it does nothing');
   }
   getTimeLoaded() {
+
   }
 
 }

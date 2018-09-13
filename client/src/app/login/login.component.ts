@@ -2,6 +2,7 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent {
   };
 
   constructor(
+    private data: DataService,
     private toastr: ToastrService,
     private authService: AuthService,
     private router: Router) {
@@ -27,7 +29,8 @@ export class LoginComponent {
   @Output() logEvent = new EventEmitter<boolean>();
 
   loginEvent(loggedIn: boolean) {
-    this.logEvent.emit(loggedIn);
+    // this.logEvent.emit(loggedIn);
+    this.data.changeMessage(loggedIn);
     console.log(loggedIn);
     this.router.navigateByUrl('/usersList');
   }
