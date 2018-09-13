@@ -23,6 +23,17 @@
   padding: 30px;
 }
 
+.topbar {
+  background-color: #1f9bde;
+  width: 30%;
+}
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
 
 .dropdown {
   position: relative;
@@ -41,6 +52,17 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.example-card.ex  {
+  max-width: 400px;
+
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+
 }
 
 #first {
@@ -70,20 +92,6 @@
   clear: both;
 }
 
-li {
-
-
-  border: 2px solid aquamarine;
-  padding: 20px;
-  width: auto;
-  height: auto;
-
-
-  border-radius: 20px;
-  background: #b0deff;
-  margin: 5px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
 
 input[type=text] {
   width: 100%;

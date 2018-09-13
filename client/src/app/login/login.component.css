@@ -1,8 +1,26 @@
 .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-  margin-top: auto;
-  width: 45%;
+  margin:auto;
+  border: 3px;
+  padding: 10px;
+  width: 30%;
+
 }
+h1{
+  background-color: #1f9bde;
+  width: 100%;
+}
+.topbar {
+  background-color: #1f9bde;
+  width: 100%;
+}
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.fail {
+  color: red;
+}
+

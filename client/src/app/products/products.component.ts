@@ -25,6 +25,8 @@ export class ProductsComponent implements OnInit {
     price: 10.61
   };
 
+  constructor(private productService: ProductService) {
+  }
   ngOnInit() {
     this.getProducts();
   }
@@ -54,10 +56,6 @@ export class ProductsComponent implements OnInit {
     this.product.category = product.category;
     console.log(this.product);
   }
-
-  constructor(private productService: ProductService) {
-  }
-
   getProduct() {
     this.productService.getProduct(1).subscribe(product => {
       this.product = product;
