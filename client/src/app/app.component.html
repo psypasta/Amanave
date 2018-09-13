@@ -1,11 +1,3 @@
-<div class="padding">
-  <div *ngIf="loggedIn">
-    <app-test-page>[loggedIn]="loggedIn"</app-test-page>
-  </div>
-  <div class="center" *ngIf="!loggedIn">
-    <app-login
-      [loggedIn]="loggedIn"
-      (logEvent)="loggEvent($event)">
-    </app-login>
-  </div>
-</div>
+<app-top-bar></app-top-bar>
+
+<router-outlet></router-outlet>

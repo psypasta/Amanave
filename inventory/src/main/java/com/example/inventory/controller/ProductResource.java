@@ -27,7 +27,7 @@ public class ProductResource {
     ProductCategoryRepository productCategoryRepository;
 
     @GetMapping("/get")
-    public List<Product> retrieveAllProduct() {
+    public List<Product> retrieveAllProduct()  {
         return productRepository.findAll();
     }
 
@@ -35,10 +35,8 @@ public class ProductResource {
     public Product retrieveProduct(@PathVariable long id) {
         Optional<Product> product = productRepository.findById(id);
 
-        if (!product.isPresent())
-            //throw new UserNotFoundException("id-" + id);
-            System.err.println("product not found!");
-
+     //   if (!product.isPresent())
+      //      return new Exception("id-" + id);
 
         return product.get();
     }
@@ -63,7 +61,6 @@ public class ProductResource {
                     HttpStatus.BAD_REQUEST);
         }
 */
-        // product.setId(id);
         System.err.println(productRequest.getName());
         System.err.println(productRequest.getArticleNumber());
         System.err.println(productRequest.getCategory());
@@ -79,7 +76,7 @@ public class ProductResource {
 
         product.setCategory(productRequest.getCategory());
 
-        Product savedProduct = productRepository.save(product);
+        productRepository.save(product);
 
         return ResponseEntity.noContent().build();
     }
@@ -114,14 +111,11 @@ public class ProductResource {
 
         Product product = new Product(productRequest.getName(), productRequest.getArticleNumber(), productRequest.getPrice());
 
-        // product.setId(productRequest.getId());
         System.err.println(productRequest.getCategory().getCategoryName());
-        // ProductCategories productCategories = new ProductCategories(productRequest.getCategory().getCategoryName());
-        // productCategories.setId(productRequest.getCategory().getId());
+
         System.err.println(productRequest.getCategory().getCategoryName());
         product.setCategory(optionalProductCategoriy.get());
-        // System.err.println(productRequest.getId());
-        // product.setId(productRequest.getId());
+
         System.err.println(productRequest.getCategory().getCategoryName());
         Product savedProduct = productRepository.save(product);
         System.err.println(productRequest.getCategory().getCategoryName());
